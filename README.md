@@ -10,7 +10,7 @@
 **so that** we can learn collaboratively.
 
 ## Schema
-<<<<<<< HEAD
+
 ![schema](resources/database-schema.png)
 
 ## Project Milestones
