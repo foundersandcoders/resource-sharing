@@ -10,7 +10,10 @@
 **so that** we can learn collaboratively.
 
 ## Schema
-[Here]()
+[Here](./resources/database-schema.png)
+
+## Project Milestones
+Click [here](./milestones.md) for our Project plan
 
 ## Endpoints
 **'/'** landing page displaying topics  
