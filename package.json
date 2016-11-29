@@ -1,0 +1,30 @@
+{
+  "name": "data-gang",
+  "version": "1.0.0",
+  "description": "Online Database of useful and reviewed resources",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-u/data-gang.git"
+  },
+  "author": "William.S Steve.H Lucy.M Jen.S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-u/data-gang/issues"
+  },
+  "homepage": "https://github.com/fac-u/data-gang#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.6",
+    "hapi": "^15.2.0",
+    "inert": "^4.0.3",
+    "vision": "^4.1.1"
+  }
+}
