@@ -1,9 +1,13 @@
 # data-gang
 
 ## User stories
-**As a** member of the current FAC cohort,  
+**As** a member of the current FAC cohort,  
 **I want to** find the best resource by topic,  
 **so that** I can extend my learning each week.
+
+**As** a member of the current FAC cohort,  
+**I want to** share and review resources with my fellow FACers,  
+**so that** we can learn collaboratively.
 
 ## Schema
 [Here]()
