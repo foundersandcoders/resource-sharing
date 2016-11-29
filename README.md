@@ -1,6 +1,6 @@
 # data-gang
 
-Objective: 
+## Objective: 
 
 You have the following options. Whatever you choose you must make use of JOIN queries and provide a way to authenticate users.
 
