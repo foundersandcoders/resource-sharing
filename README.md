@@ -10,20 +10,20 @@
 **so that** we can learn collaboratively.
 
 ## Schema
-[Here]()
+![schema](resources/database-schema.png)
 
 ## Endpoints
-**'/'** landing page displaying topics  
-**'/{topicsEndpoint}'** resources by topic  
-**'/{topicsEndpoint}/{resourceEndpoint}'** all reviews on specific resource  
-**'/recent'** shows all reviews, by all users, in time order - most recent review first  
-**'/users/{Username}'** all reviews written by this user  
-**'/createResource'** form for user to add new resource  
-**'/createReview/{resourceEndpoint}'** form for user to add their review  
-**'/editResource'**  
-**'/editReview'**  
-**'/login'**  
-**'/logout'**  
+- **'/'** landing page displaying topics  
+- **'/{topicsEndpoint}'** resources by topic  
+- **'/{topicsEndpoint}/{resourceEndpoint}'** all reviews on specific resource  
+- **'/recent'** shows all reviews, by all users, in time order - most recent review first  
+- **'/users/{Username}'** all reviews written by this user  
+- **'/createResource'** form for user to add new resource  
+- **'/createReview/{resourceEndpoint}'** form for user to add their review  
+- **'/editResource'**  
+- **'/editReview'**  
+- **'/login'**  
+- **'/logout'**  
 
 ## Features:
 - I can log in.
