@@ -17,18 +17,18 @@ CREATE TABLE IF NOT EXISTS topics (
 );
 
 INSERT INTO topics(id, title, image_path, endpoint) VALUES
-  (1, 'HTML & CSS', './public/images/html_css.jpg', '/html-css'),
-  (2, 'Git & Github', './public/images/git_github.jpg', '/git-github'),
-  (3, 'Command Line', './public/images/command_line.jpg', '/command-line'),
-  (4, 'DOM Mainpulation', './public/images/DOM.jpg', '/the-dom'),
-  (5, 'Testing', './public/images/testing.jpg', '/testing'),
-  (6, 'API', './public/images/API.jpg', '/api'),
-  (7, 'Node', './public/images/node.jpg', '/node'),
-  (8, 'Hapi', './public/images/hapi.jpg', '/hapi'),
-  (9, 'Handlebars', './public/images/handlebars.jpg', '/handlebars'),
-  (10, 'Databases', './public/images/databases.jpg', '/databases'),
-  (11, 'Authentication', './public/images/authentication.jpg', '/authetication'),
-  (12, 'UX & UI', './public/images/ux_ui.jpg', '/ux-ui')
+  (1, 'HTML & CSS', 'html_css.jpg', 'html-css'),
+  (2, 'Git & Github', 'git_github.jpg', 'git-github'),
+  (3, 'Command Line', 'command_line.jpg', 'command-line'),
+  (4, 'DOM Mainpulation', 'DOM.jpg', 'the-dom'),
+  (5, 'Testing', '.testing.jpg', 'testing'),
+  (6, 'API', 'API.jpg', 'api'),
+  (7, 'Node', 'node.jpg', 'node'),
+  (8, 'Hapi', 'hapi.jpg', 'hapi'),
+  (9, 'Handlebars', 'handlebars.jpg', 'handlebars'),
+  (10, 'Databases', 'databases.jpg', 'databases'),
+  (11, 'Authentication', 'authentication.jpg', 'authetication'),
+  (12, 'UX & UI', 'ux_ui.jpg', 'ux-ui')
 ON CONFLICT DO NOTHING;
 
 

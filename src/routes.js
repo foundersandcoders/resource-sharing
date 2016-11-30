@@ -6,6 +6,7 @@ const home = {
   handler (req, reply) {
     queries.getTopics((err, topics) => {
       if (err) console.log('No topics were loaded!', err);
+      console.log(topics);
       reply.view('topics', { topics });
     });
   }
