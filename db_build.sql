@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 INSERT INTO users(firstname, lastname, github, email) VALUES
-  ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com')
+  ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com', 'THESAVAGE')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
