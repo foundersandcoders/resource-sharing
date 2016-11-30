@@ -2,11 +2,11 @@
 <h2>Enter a resource for {{topic}}</h2>
 <form id='resourceForm' class='create_resource-form' action='submit' method='POST'>
   Resource URL:
-  <input type='text' name='url' placeholder='enter URL'><br>
+  <input type='text' name='url' placeholder='enter URL' required><br>
   Resource Title:
-  <input type='text' name='title' placeholder='enter Title'><br>
+  <input type='text' name='title' placeholder='enter Title' required><br>
   Resource Type:
-  <select name='typeid' form='resourceForm'>
+  <select name='typeid' form='resourceForm' required>
     <option value="1">Tutorial</option>
     <option value="2">Article</option>
     <option value="3">Reference</option>

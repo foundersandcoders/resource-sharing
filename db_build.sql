@@ -8,6 +8,9 @@ CREATE TABLE IF NOT EXISTS users (
     email       TEXT       NOT NULL
 );
 
+INSERT INTO users(firstname, lastname, github, email) VALUES
+  ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com')
+ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
   id          SMALLINT   PRIMARY KEY,
@@ -52,7 +55,8 @@ CREATE TABLE IF NOT EXISTS resources (
   url          TEXT        NOT NULL,
   topic_id     INTEGER     NOT NULL     REFERENCES topics(id),
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
-  user_id      INTEGER     NOT NULL     REFERENCES users(id)
+  user_id      INTEGER     NOT NULL     REFERENCES users(id),
+  endpoint     TEXT        NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS reviews (

@@ -19,10 +19,11 @@ queries.getTopics = (cb) => {
 };
 
 queries.createResource = (payload, cb) => {
+  console.log(payload);
   var endpoint = convertToEndpoint(payload.title);
-  var values = [payload.title, payload.url, payload.topic, payload.typeid, endpoint, 0];
-  var sql = `INSERT INTO resources(title, url, topic_id, type_id, user_id)
-  VALUES ($1, $2, (SELECT id FROM topics WHERE endpoint = $3), $4, $5)`
+  var values = [payload.title, payload.url, payload.topic, payload.typeid, 1, endpoint];
+  var sql = `INSERT INTO resources(title, url, topic_id, type_id, user_id, endpoint)
+  VALUES ($1, $2, (SELECT id FROM topics WHERE endpoint = $3), $4, $5, $6)`
   dbConn.query(sql, values, (err) => {
     if(err) cb(err);
     else {
