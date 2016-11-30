@@ -6,18 +6,21 @@ CREATE TABLE IF NOT EXISTS users (
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
     email       TEXT       NOT NULL,
-    username    TEXT       NOT NULL
+    username    TEXT       UNIQUE
 );
 
 INSERT INTO users(firstname, lastname, github, email, username) VALUES
-  ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com', 'THESAVAGE')
+  ('Will', 'Savage', 'savagewilliam', 'will@fac.com', 'savagewilliam'),
+  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com', 'stevehopkinson'),
+  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com', 'lucymonie'),
+  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com', 'jsms90')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
   id          SMALLINT   PRIMARY KEY,
   title       TEXT       NOT NULL,
   image_path  TEXT       NOT NULL,
-  endpoint    TEXT       NOT NULL
+  endpoint    TEXT       UNIQUE
 );
 
 INSERT INTO topics(id, title, image_path, endpoint) VALUES
@@ -57,8 +60,14 @@ CREATE TABLE IF NOT EXISTS resources (
   topic_id     INTEGER     NOT NULL     REFERENCES topics(id),
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
   user_id      INTEGER     NOT NULL     REFERENCES users(id),
-  endpoint     TEXT        NOT NULL
+  endpoint     TEXT        UNIQUE
 );
+
+INSERT INTO resources(title, url, topic_id, type_id, user_id) VALUES
+  ('How it feels to code Javascript in 2016', 'https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.lxto065k1', '1', '2', '1'),
+  ('How to write testable JavaScript', 'https://www.youtube.com/watch?v=OzjogCFO4Zo', '5', '4', '1'),
+  ('Learn to code HTML & CSS', 'http://learn.shayhowe.com/html-css/', '1', '1', '2')
+ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS reviews (
   id           SERIAL      PRIMARY KEY,

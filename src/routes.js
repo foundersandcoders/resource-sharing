@@ -11,6 +11,17 @@ const home = {
   }
 };
 
+const topicsEndpoint = {
+  method: 'GET',
+  path: '/{topicsEndpoint}',
+  handler (req, reply) {
+    queries.getResources(req.params.topicsEndpoint, (err, resources) => {
+      if (err) console.log('No resources were loaded!', err);
+      reply.view('resources', { resources });
+    });
+  }
+};
+
 const fileServer = {
   method: 'GET',
   path: '/static/{param*}',
@@ -41,4 +52,5 @@ const createResource = {
   }
 }
 
-module.exports = [home, fileServer, newResourceForm, createResource];
+module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint];
+
