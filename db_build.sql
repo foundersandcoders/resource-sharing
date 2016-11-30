@@ -63,10 +63,10 @@ CREATE TABLE IF NOT EXISTS resources (
   endpoint     TEXT        UNIQUE
 );
 
-INSERT INTO resources(title, url, topic_id, type_id, user_id) VALUES
-  ('How it feels to code Javascript in 2016', 'https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.lxto065k1', '1', '2', '1'),
-  ('How to write testable JavaScript', 'https://www.youtube.com/watch?v=OzjogCFO4Zo', '5', '4', '1'),
-  ('Learn to code HTML & CSS', 'http://learn.shayhowe.com/html-css/', '1', '1', '2')
+INSERT INTO resources(title, url, topic_id, type_id, user_id, endpoint) VALUES
+  ('How it feels to code Javascript in 2016', 'https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.lxto065k1', '1', '2', '1', 'how-it-feels-to-learn-javascript-in-2016'),
+  ('How to write testable JavaScript', 'https://www.youtube.com/watch?v=OzjogCFO4Zo', '5', '4', '1', 'how-to-write-testable-javascript'),
+  ('Learn to code HTML & CSS', 'http://learn.shayhowe.com/html-css/', '1', '1', '2', 'learn-to-code-in-html--css')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS reviews (
