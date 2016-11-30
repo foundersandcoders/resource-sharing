@@ -16,7 +16,7 @@ INSERT INTO users(firstname, lastname, github, email) VALUES
 
 
 CREATE TABLE IF NOT EXISTS topics (
-  id          SMALLINT     PRIMARY KEY,
+  id          SMALLINT   PRIMARY KEY,
   title       TEXT       NOT NULL,
   image_path  TEXT       NOT NULL,
   endpoint    TEXT       NOT NULL
@@ -38,7 +38,7 @@ INSERT INTO topics(id, title, image_path, endpoint) VALUES
 
 
 CREATE TABLE IF NOT EXISTS type (
-  id           SMALLINT     PRIMARY KEY,
+  id           SMALLINT    PRIMARY KEY,
   label        TEXT        NOT NULL
 );
 
