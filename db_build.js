@@ -8,11 +8,11 @@ const buildDatabase = (cb) => {
 
   const sql = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
 
-  connection.query(sql, (err, cb) => {
+  connection.query(sql, (err, result) => {
     if (err) {
-      console.log('Error', err);
+      cb(err);
     } else {
-      cb();
+      cb(null, result);
     }
   });
 };
