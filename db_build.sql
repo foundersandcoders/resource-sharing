@@ -25,7 +25,7 @@ INSERT INTO topics(id, title, image_path, endpoint) VALUES
   (2, 'Git & Github', 'git_github.jpg', 'git-github'),
   (3, 'Command Line', 'command_line.jpg', 'command-line'),
   (4, 'DOM Mainpulation', 'DOM.jpg', 'the-dom'),
-  (5, 'Testing', '.testing.jpg', 'testing'),
+  (5, 'Testing', 'testing.jpg', 'testing'),
   (6, 'API', 'API.jpg', 'api'),
   (7, 'Node', 'node.jpg', 'node'),
   (8, 'Hapi', 'hapi.jpg', 'hapi'),
