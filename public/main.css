@@ -1,3 +1,18 @@
 body {
   background-color: #999;
 }
+
+.topics {
+  display: inline-block;
+  margin: 20px;
+  border-radius: 10px;
+  background-color: #eee;
+}
+
+.topic_image {
+  width:  100px;
+  height: 100px;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+}
