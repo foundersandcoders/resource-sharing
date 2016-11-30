@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
     username    TEXT       NOT NULL
 );
 
-INSERT INTO users(firstname, lastname, github, email) VALUES
+INSERT INTO users(firstname, lastname, github, email, username) VALUES
   ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com', 'THESAVAGE')
 ON CONFLICT DO NOTHING;
 
