@@ -1,4 +1,14 @@
 <!-- below is test code to test our server -->
-<section>
+
+{{#each topics}}
+
+  <section>
   <h1>Test scripts</h1>
-</section>
+   <h3>{{this.title}}</h3>
+   <img src= {{this.image_path}}>
+   <form action = {{this.endpoint}} method = "get">
+     <input type="submit" value="Submit">
+   </form>
+  </section>
+
+ +{{/each}}
