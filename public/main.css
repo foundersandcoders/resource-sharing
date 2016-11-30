@@ -3,7 +3,7 @@ body {
 }
 
 .topics {
-  font-family: 'Futura', 'Didact Gothic', sans-serif;
+  font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
   display: inline-block;
   height: 200px;
   width: 200px;
@@ -18,7 +18,7 @@ body {
 
 .topic_title {
   text-align: center;
-  margin-top: 5px;
+  margin-top: -25px;
   margin-bottom: 15px;
 }
 
