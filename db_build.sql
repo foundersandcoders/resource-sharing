@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS users (
     firstname   TEXT       NOT NULL,
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
-    email       TEXT       NOT NULL
+    email       TEXT       NOT NULL,
+    username    TEXT       NOT NULL
 );
 
 INSERT INTO users(firstname, lastname, github, email) VALUES
