@@ -6,8 +6,18 @@ const home = {
   handler (req, reply) {
     queries.getTopics((err, topics) => {
       if (err) console.log('No topics were loaded!', err);
-      console.log(topics);
       reply.view('topics', { topics });
+    });
+  }
+};
+
+const topicsEndpoint = {
+  method: 'GET',
+  path: '/{topicsEndpoint}',
+  handler (req, reply) {
+    queries.getResources(req.params.topicsEndpoint, (err, resources) => {
+      if (err) console.log('No resources were loaded!', err);
+      reply.view('resources', { resources });
     });
   }
 };
@@ -22,4 +32,4 @@ const fileServer = {
   }
 };
 
-module.exports = [home, fileServer];
+module.exports = [home, topicsEndpoint, fileServer];
