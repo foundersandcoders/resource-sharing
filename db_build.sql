@@ -59,8 +59,7 @@ CREATE TABLE IF NOT EXISTS resources (
   url          TEXT        NOT NULL,
   topic_id     INTEGER     NOT NULL     REFERENCES topics(id),
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
-  user_id      INTEGER     NOT NULL     REFERENCES users(id),
-  endpoint     TEXT        UNIQUE
+  user_id      INTEGER     NOT NULL     REFERENCES users(id)
 );
 
 INSERT INTO resources(title, url, topic_id, type_id, user_id) VALUES
