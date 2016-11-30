@@ -2,7 +2,7 @@ const server = require('./src/server');
 const buildDatabase = require('./db_build.js');
 
 const startServer = (err, result) => {
-  if (err) console.log('unable to build database:' err);
+  if (err) console.log('unable to build database:', err);
   else {
     server.start( (err) => {
       if (err) throw err;

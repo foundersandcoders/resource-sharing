@@ -8,12 +8,6 @@ CREATE TABLE IF NOT EXISTS users (
     email       TEXT       NOT NULL
 );
 
-INSERT INTO users(firstname, lastname, github, email) VALUES
-  ('Will', 'Savage', 'savagewilliam', 'will@fac.com'),
-  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com'),
-  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com'),
-  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com');
-
 
 CREATE TABLE IF NOT EXISTS topics (
   id          SMALLINT   PRIMARY KEY,
@@ -34,7 +28,8 @@ INSERT INTO topics(id, title, image_path, endpoint) VALUES
   (9, 'Handlebars', './public/images/handlebars.jpg', '/handlebars'),
   (10, 'Databases', './public/images/databases.jpg', '/databases'),
   (11, 'Authentication', './public/images/authentication.jpg', '/authetication'),
-  (12, 'UX & UI', './public/images/ux_ui.jpg', '/ux-ui');
+  (12, 'UX & UI', './public/images/ux_ui.jpg', '/ux-ui')
+ON CONFLICT DO NOTHING;
 
 
 CREATE TABLE IF NOT EXISTS type (
@@ -47,7 +42,8 @@ INSERT INTO type(id, label) VALUES
   (2, 'article'),
   (3, 'reference'),
   (4, 'video'),
-  (5, 'IDE');
+  (5, 'IDE')
+ON CONFLICT DO NOTHING;
 
 
 CREATE TABLE IF NOT EXISTS resources (
@@ -59,7 +55,7 @@ CREATE TABLE IF NOT EXISTS resources (
   user_id      INTEGER     NOT NULL     REFERENCES users(id)
 );
 
-CREATE TABLE reviews (
+CREATE TABLE IF NOT EXISTS reviews (
   id           SERIAL      PRIMARY KEY,
   timecreated  TIMESTAMP   NOT NULL,
   rating       SMALLINT    NOT NULL     CHECK (rating > 0 AND rating < 6),

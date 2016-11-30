@@ -1,9 +1,6 @@
-const env = require('env2');
 const fs = require('fs');
 
 const buildDatabase = (cb) => {
-  env('./config.env');
-
   const connection = require('./db_connection');
 
   const sql = fs.readFileSync(`${__dirname}/db_build.sql`).toString();
@@ -12,7 +9,6 @@ const buildDatabase = (cb) => {
     if (err) {
       cb(err);
     } else {
-      console.log(result, "result");
       cb(null, result);
     }
   });
