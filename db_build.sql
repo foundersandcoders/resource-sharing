@@ -5,21 +5,26 @@ CREATE TABLE IF NOT EXISTS users (
     firstname   TEXT       NOT NULL,
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
-    email       TEXT       NOT NULL
+    email       TEXT       NOT NULL,
+    username    TEXT       UNIQUE
 );
 
 INSERT INTO users(firstname, lastname, github, email) VALUES
+<<<<<<< HEAD
   ('Will', 'Savage', 'savagewilliam', 'will@fac.com'),
   ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com'),
   ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com'),
   ('Jen', 'Spencer', 'jsms90', 'jen@fac.com')
+=======
+  ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com', 'THESAVAGE')
+>>>>>>> a9260516c83071a8845a4285c9aaf3a2239e7332
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
   id          SMALLINT   PRIMARY KEY,
   title       TEXT       NOT NULL,
   image_path  TEXT       NOT NULL,
-  endpoint    TEXT       NOT NULL
+  endpoint    TEXT       UNIQUE
 );
 
 INSERT INTO topics(id, title, image_path, endpoint) VALUES
@@ -58,7 +63,8 @@ CREATE TABLE IF NOT EXISTS resources (
   url          TEXT        NOT NULL,
   topic_id     INTEGER     NOT NULL     REFERENCES topics(id),
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
-  user_id      INTEGER     NOT NULL     REFERENCES users(id)
+  user_id      INTEGER     NOT NULL     REFERENCES users(id),
+  endpoint     TEXT        UNIQUE
 );
 
 INSERT INTO resources(title, url, topic_id, type_id, user_id) VALUES
