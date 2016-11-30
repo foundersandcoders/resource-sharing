@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
     email       TEXT       NOT NULL,
-    username    TEXT       NOT NULL
+    username    TEXT       UNIQUE
 );
 
 INSERT INTO users(firstname, lastname, github, email) VALUES
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS topics (
   id          SMALLINT   PRIMARY KEY,
   title       TEXT       NOT NULL,
   image_path  TEXT       NOT NULL,
-  endpoint    TEXT       NOT NULL
+  endpoint    TEXT       UNIQUE
 );
 
 INSERT INTO topics(id, title, image_path, endpoint) VALUES
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS resources (
   topic_id     INTEGER     NOT NULL     REFERENCES topics(id),
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
   user_id      INTEGER     NOT NULL     REFERENCES users(id),
-  endpoint     TEXT        NOT NULL
+  endpoint     TEXT        UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS reviews (
