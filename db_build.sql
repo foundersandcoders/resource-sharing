@@ -5,9 +5,13 @@ CREATE TABLE IF NOT EXISTS users (
     firstname   TEXT       NOT NULL,
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
-    email       TEXT       NOT NULL
+    email       TEXT       NOT NULL,
+    username    TEXT       NOT NULL
 );
 
+INSERT INTO users(firstname, lastname, github, email, username) VALUES
+  ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com', 'THESAVAGE')
+ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
   id          SMALLINT   PRIMARY KEY,
@@ -52,7 +56,8 @@ CREATE TABLE IF NOT EXISTS resources (
   url          TEXT        NOT NULL,
   topic_id     INTEGER     NOT NULL     REFERENCES topics(id),
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
-  user_id      INTEGER     NOT NULL     REFERENCES users(id)
+  user_id      INTEGER     NOT NULL     REFERENCES users(id),
+  endpoint     TEXT        NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS reviews (

@@ -6,7 +6,6 @@ const home = {
   handler (req, reply) {
     queries.getTopics((err, topics) => {
       if (err) console.log('No topics were loaded!', err);
-      console.log(topics);
       reply.view('topics', { topics });
     });
   }
@@ -22,4 +21,24 @@ const fileServer = {
   }
 };
 
-module.exports = [home, fileServer];
+const newResourceForm = {
+  method: 'GET',
+  path: '/create-resource/{topic}',  //this request is fired from the list of resources page...
+  handler (req, reply) {
+    var topic = encodeURIComponent(req.params.topic);
+    reply.view('new_resource_form', {topic});
+  }
+}
+
+const createResource = {
+  method: 'POST',
+  path: '/create-resource/submit',
+  handler (req, reply) {
+    queries.createResource(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to create resource', err);
+      reply.redirect(redirect);
+    })
+  }
+}
+
+module.exports = [home, fileServer, newResourceForm, createResource];
