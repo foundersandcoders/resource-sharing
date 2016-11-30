@@ -12,6 +12,7 @@ const buildDatabase = (cb) => {
     if (err) {
       cb(err);
     } else {
+      console.log(result, "result");
       cb(null, result);
     }
   });
