@@ -26,6 +26,7 @@ Click [here](./milestones.md) for our Project plan
 - **'/createReview/{resourceEndpoint}'** form for user to add their review  
 - **'/editResource'**  
 - **'/editReview'**  
+- **'/register'** create new user
 - **'/login'**  
 - **'/logout'**  
 
