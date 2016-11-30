@@ -9,15 +9,11 @@ CREATE TABLE IF NOT EXISTS users (
     username    TEXT       UNIQUE
 );
 
-INSERT INTO users(firstname, lastname, github, email) VALUES
-<<<<<<< HEAD
-  ('Will', 'Savage', 'savagewilliam', 'will@fac.com'),
-  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com'),
-  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com'),
-  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com')
-=======
-  ('will', 'savage', 'savagewilliam', 'willsavage@hotmail.com', 'THESAVAGE')
->>>>>>> a9260516c83071a8845a4285c9aaf3a2239e7332
+INSERT INTO users(firstname, lastname, github, email, username) VALUES
+  ('Will', 'Savage', 'savagewilliam', 'will@fac.com', 'savagewilliam'),
+  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com', 'stevehopkinson'),
+  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com', 'lucymonie'),
+  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com', 'jsms90')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
