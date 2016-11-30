@@ -32,9 +32,6 @@ const fileServer = {
   }
 };
 
-<<<<<<< HEAD
-module.exports = [home, topicsEndpoint, fileServer];
-=======
 const newResourceForm = {
   method: 'GET',
   path: '/create-resource/{topic}',  //this request is fired from the list of resources page...
@@ -55,5 +52,5 @@ const createResource = {
   }
 }
 
-module.exports = [home, fileServer, newResourceForm, createResource];
->>>>>>> a9260516c83071a8845a4285c9aaf3a2239e7332
+module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint];
+
