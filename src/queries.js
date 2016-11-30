@@ -18,7 +18,6 @@ queries.getTopics = (cb) => {
   );
 };
 
-<<<<<<< HEAD
 queries.getResources = (topicsEndpoint, cb) => {
   dbConn.query(`SELECT resources.title, url FROM resources
     LEFT OUTER JOIN topics ON (resources.topic_id=topics.id)
@@ -29,7 +28,6 @@ queries.getResources = (topicsEndpoint, cb) => {
   );
 };
 
-=======
 queries.createResource = (payload, cb) => {
   console.log(payload);
   var endpoint = convertToEndpoint(payload.title);
@@ -46,6 +44,4 @@ queries.createResource = (payload, cb) => {
 };
 
 
-
->>>>>>> a9260516c83071a8845a4285c9aaf3a2239e7332
 module.exports = queries;
