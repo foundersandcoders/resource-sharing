@@ -1,18 +1,28 @@
 body {
-  background-color: #999;
+  background-color: #ddd;
 }
 
 .topics {
+  font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
   display: inline-block;
+  height: 200px;
+  width: 200px;
   margin: 20px;
+  padding: 0px 20px;
   border-radius: 10px;
   background-color: #eee;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.topic_image {
-  width:  100px;
-  height: 100px;
-  background-position: 50% 50%;
-  background-repeat:   no-repeat;
-  background-size:     cover;
+.topic_title {
+  text-align: center;
+  margin-top: -25px;
+  margin-bottom: 15px;
+}
+
+.topic_btn {
+  display: block;
+  margin: 0 auto;
 }
