@@ -8,6 +8,12 @@ CREATE TABLE IF NOT EXISTS users (
     email       TEXT       NOT NULL
 );
 
+INSERT INTO users(firstname, lastname, github, email) VALUES
+  ('Will', 'Savage', 'savagewilliam', 'will@fac.com'),
+  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com'),
+  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com'),
+  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com')
+ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
   id          SMALLINT   PRIMARY KEY,
@@ -54,6 +60,12 @@ CREATE TABLE IF NOT EXISTS resources (
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
   user_id      INTEGER     NOT NULL     REFERENCES users(id)
 );
+
+INSERT INTO resources(title, url, topic_id, type_id, user_id) VALUES
+  ('How it feels to code Javascript in 2016', 'https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.lxto065k1', '1', '2', '1'),
+  ('How to write testable JavaScript', 'https://www.youtube.com/watch?v=OzjogCFO4Zo', '5', '4', '1'),
+  ('Learn to code HTML & CSS', 'http://learn.shayhowe.com/html-css/', '1', '1', '2')
+ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS reviews (
   id           SERIAL      PRIMARY KEY,
