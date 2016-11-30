@@ -23,12 +23,24 @@ const fileServer = {
 
 const newResourceForm = {
   method: 'GET',
-  path: '/create-resource/{topic}',  //this request is fired from the list of resources page...
+  path: '/create-resource/{topic}',  // this request is fired from the list of resources page...
   handler (req, reply) {
     var topic = encodeURIComponent(req.params.topic);
     reply.view('new_resource_form', {topic});
   }
-}
+};
+
+const reviewsByUser = {
+  method: 'GET',
+  path: '/users/{username}',
+  handler (req, reply) {
+    var username = encodeURIComponent(req.params.username);
+    queries.getReviewsByUser(username, (err, reviews) => {
+      if (err) console.log(err);
+      reply.view('reviews_by_user', { username, reviews });
+    });
+  }
+};
 
 const createResource = {
   method: 'POST',
@@ -37,8 +49,8 @@ const createResource = {
     queries.createResource(req.payload, (err, redirect) => {
       if (err) console.log('Unable to create resource', err);
       reply.redirect(redirect);
-    })
+    });
   }
-}
+};
 
-module.exports = [home, fileServer, newResourceForm, createResource];
+module.exports = [home, fileServer, newResourceForm, createResource, reviewsByUser];

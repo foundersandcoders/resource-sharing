@@ -1,0 +1,11 @@
+<h2>Reviews by {{username}}</h2>
+
+{{#each reviews}}
+
+  <section class="review">
+    <h3>Review of <a href="{{this.url}}">{{this.title}}</a></h3>
+    <p>Rating: {{this.rating}}</p>
+    <p>{{this.content}}</p>
+  </section>
+
+{{/each}}
