@@ -1,9 +1,7 @@
 <!-- below is test code to test our server -->
-
 {{#each topics}}
 
-  <section>
-  <h1>Test scripts</h1>
+  <section style="display:inline-block">
    <h3>{{this.title}}</h3>
    <img src= {{this.image_path}}>
    <form action = {{this.endpoint}} method = "get">
@@ -11,4 +9,4 @@
    </form>
   </section>
 
- +{{/each}}
+{{/each}}
