@@ -6,7 +6,6 @@ body {
   margin-bottom: 10px;
 }
 .topics, .resources, .reviews {
->>>>>>> master
   font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
   display: inline-block;
   height: 200px;
@@ -21,7 +20,6 @@ body {
 }
 
 .topic_title, .resources_title, .reviews_title {
->>>>>>> master
   text-align: center;
   margin-top: -25px;
   margin-bottom: 15px;
