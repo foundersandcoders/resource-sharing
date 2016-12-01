@@ -49,7 +49,7 @@ queries.checkLogin = (payload, cb) => {
   const password = payload.password;
   const values = [payload.username];
   const sql = `SELECT * FROM users WHERE username = $1`;
-  dbConn.query(sql, data, (err) => {
+  dbConn.query(sql, values, (err, data) => {
     if (err) cb(err);
     const result = data.rows[0];
     Bcrypt.compare(password, result.password, (err, isMatch) => {
