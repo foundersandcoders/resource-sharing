@@ -23,6 +23,17 @@ const topicsEndpoint = {
   }
 };
 
+const resourcesEndpoint = {
+  method: 'GET',
+  path: '/{topicsEndpoint}/{resourcesEndpoint}',
+  handler (req, reply) {
+    queries.getReviews(req.params.resourcesEndpoint, (err, reviews) => {
+      if (err) console.log('No reviews were loaded!', err);
+      reply.view('reviews', { reviews });
+    });
+  }
+};
+
 const fileServer = {
   method: 'GET',
   path: '/static/{param*}',
@@ -40,7 +51,7 @@ const newResourceForm = {
     auth: {
       mode: 'required',
       strategy: 'session'
-      },
+    },
     handler (req, reply) {
       reply.view('new_resource_form');
     }
@@ -114,11 +125,11 @@ const registerSubmit = {
   method: 'POST',
   path: '/register',
   handler (req, reply) {
-    console.log(`request coming in for creating new user ${req.payload.username}`)
+    console.log(`request coming in for creating new user ${req.payload.username}`);
     queries.registerUser(req.payload, (err, userinfo) => {
       req.cookieAuth.set({ username: userinfo.username, userid: userinfo.id});
       reply.redirect('/');
-    })
+    });
   }
 };
 
@@ -129,6 +140,7 @@ module.exports = [
   createResource,
   editResourceForm,
   topicsEndpoint,
+  resourcesEndpoint,
   login,
   loginSubmit,
   logout,
