@@ -12,9 +12,12 @@
     <nav class="navbar">
       <ul class="navbar__list">
         <li class="navbar__listitem"><a href="../topics.hbs">Home</a></li>
-        <li class="navbar__listitem"><a href="../create-resource">Share something</a></li>
-        <li class="navbar__listitem"><a href="../login">Login</a></li>
-        <li class="navbar__listitem"><a href="../login">Logout</a></li>
+        {{# if credentials}}
+          <li class="navbar__listitem"><a href="../create-resource">Share something</a></li>
+          <li class="navbar__listitem"><a href="../login">Logout</a></li>
+        {{else}}
+          <li class="navbar__listitem"><a href="../login">Login</a></li>
+        {{/if}}
       </ul>
     </nav>
     {{{content}}}
