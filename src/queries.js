@@ -52,10 +52,10 @@ queries.checkLogin = (payload, cb) => {
   dbConn.query(sql, values, (err, data) => {
     if (err || data.rows.length === 0) cb(err);
     else {
-      const result = data.rows[0];
+      const userInfo = data.rows[0];
       Bcrypt.compare(password, result.password, (err, isMatch) => {
-        if (err) cb(err);
-        cb(null, isMatch);
+        if (err || !isMatch) cb(err);
+        cb(null, userInfo);
       });
     }
   });
