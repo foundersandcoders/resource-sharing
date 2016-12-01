@@ -20,7 +20,11 @@ queries.getTopics = (cb) => {
 };
 
 queries.getResources = (topicsEndpoint, cb) => {
+<<<<<<< HEAD
+  dbConn.query(`SELECT resources.title, url, resources.endpoint FROM resources
+=======
   dbConn.query(`SELECT resources.title, resources.endpoint, url FROM resources
+>>>>>>> 0509e2304ce2a85ba8e54b5b37801ffd1c4f2acc
     LEFT OUTER JOIN topics ON (resources.topic_id=topics.id)
     WHERE topics.endpoint=$1`, [topicsEndpoint], (err, data) => {
       if (err) cb(err);
@@ -50,6 +54,8 @@ queries.createResource = (payload, cb) => {
     if (err) cb(err);
     else {
       var redirect = '/'; // later redirect to the resource that was created?
+<<<<<<< HEAD
+=======
       cb(null, redirect);
     }
   });
@@ -71,6 +77,7 @@ queries.createReview = (payload, cb) => {
     else {
       var topic = data.rows[0];
       var redirect = `/${topic.endpoint}/${payload.endpoint}`;
+>>>>>>> 0509e2304ce2a85ba8e54b5b37801ffd1c4f2acc
       cb(null, redirect);
     }
   });
