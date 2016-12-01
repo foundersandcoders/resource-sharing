@@ -34,11 +34,11 @@ queries.createResource = (payload, cb) => {
   var endpoint = convertToEndpoint(payload.title);
   var values = [payload.title, payload.url, payload.topicid, payload.typeid, payload.userid, endpoint];
   var sql = `INSERT INTO resources(title, url, topic_id, type_id, user_id, endpoint)
-  VALUES ($1, $2, (SELECT id FROM topics WHERE endpoint = $3), $4, $5, $6)`;
+  VALUES ($1, $2, $3, $4, $5, $6)`;
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
-      var redirect = `/${payload.topic}/${endpoint}`;
+      var redirect = '/'; //later redirect to the resource that was created?
       cb(null, redirect);
     }
   });
@@ -53,7 +53,7 @@ queries.checkLogin = (payload, cb) => {
     if (err || data.rows.length === 0) cb(err);
     else {
       const userInfo = data.rows[0];
-      Bcrypt.compare(password, result.password, (err, isMatch) => {
+      Bcrypt.compare(password, userInfo.password, (err, isMatch) => {
         if (err || !isMatch) cb(err);
         cb(null, userInfo);
       });
