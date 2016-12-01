@@ -23,6 +23,17 @@ const topicsEndpoint = {
   }
 };
 
+const resourcesEndpoint = {
+  method: 'GET',
+  path: '/{topicsEndpoint}/{resourcesEndpoint}',
+  handler (req, reply) {
+    queries.getReviews(req.params.resourcesEndpoint, (err, reviews) => {
+      if (err) console.log('No reviews were loaded!', err);
+      reply.view('reviews', { reviews });
+    });
+  }
+};
+
 const fileServer = {
   method: 'GET',
   path: '/static/{param*}',
@@ -40,7 +51,7 @@ const newResourceForm = {
     auth: {
       mode: 'required',
       strategy: 'session'
-      },
+    },
     handler (req, reply) {
       reply.view('new_resource_form');
     }
@@ -149,6 +160,7 @@ module.exports = [
   createResource,
   editResourceForm,
   topicsEndpoint,
+  resourcesEndpoint,
   login,
   loginSubmit,
   logout,
