@@ -44,6 +44,18 @@ queries.createResource = (payload, cb) => {
   });
 };
 
+queries.getMyResource = (resourcesEndpoint, cb) => {
+  dbConn.query(`SELECT url, resources.title AS resources_title, type.label, topics.title AS topics_title FROM resources
+    LEFT OUTER JOIN topics ON topics.id=resources.topic_id LEFT OUTER JOIN type ON type.id=resources.type_id
+    WHERE resources.endpoint=$1`, [resourcesEndpoint], (err, data) => {
+      if (err) cb(err);
+      else {
+        cb(null, data.rows[0]);
+      }
+    }
+  );
+};
+
 queries.checkLogin = (payload, cb) => {
   const username = payload.username;
   const password = payload.password;
