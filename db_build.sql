@@ -74,7 +74,7 @@ ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS reviews (
   id           SERIAL      PRIMARY KEY,
-  timecreated  TIMESTAMP   NOT NULL,
+  timestamp    TIMESTAMP   DEFAULT      current_timestamp,
   rating       SMALLINT    NOT NULL     CHECK (rating > 0 AND rating < 6),
   resource_id  INTEGER     NOT NULL     REFERENCES resources(id),
   content      TEXT        NOT NULL,

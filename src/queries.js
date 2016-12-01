@@ -20,7 +20,7 @@ queries.getTopics = (cb) => {
 };
 
 queries.getResources = (topicsEndpoint, cb) => {
-  dbConn.query(`SELECT resources.title, url FROM resources
+  dbConn.query(`SELECT resources.title, resources.endpoint, url FROM resources
     LEFT OUTER JOIN topics ON (resources.topic_id=topics.id)
     WHERE topics.endpoint=$1`, [topicsEndpoint], (err, data) => {
       if (err) cb(err);
@@ -38,7 +38,28 @@ queries.createResource = (payload, cb) => {
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
-      var redirect = '/'; //later redirect to the resource that was created?
+      var redirect = '/'; // later redirect to the resource that was created?
+      cb(null, redirect);
+    }
+  });
+};
+
+queries.createReview = (payload, cb) => {
+  console.log(payload, 'review payload');
+  var values = [payload.rating, payload.endpoint, payload.content, payload.userid];
+  console.log(payload.endpoint);
+  var sql = `INSERT INTO reviews(rating, resource_id, content, user_id)
+              VALUES ($1, (SELECT id FROM resources WHERE endpoint = $2), $3, $4)
+              RETURNING (
+                SELECT endpoint FROM topics WHERE id = (
+                  SELECT topic_id FROM resources WHERE id = resource_id
+                )
+              )`;
+  dbConn.query(sql, values, (err, data) => {
+    if (err) cb(err);
+    else {
+      var topic = data.rows[0];
+      var redirect = `/${topic.endpoint}/${payload.endpoint}`;
       cb(null, redirect);
     }
   });
