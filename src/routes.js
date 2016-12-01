@@ -5,6 +5,7 @@ const home = {
   path: '/',
   handler (req, reply) {
     queries.getTopics((err, topics) => {
+      console.log(req.auth.credentials);
       if (err) console.log('No topics were loaded!', err);
       reply.view('topics', { topics });
     });
@@ -69,7 +70,7 @@ const loginSubmit = {
         console.log('Unable to login');
         reply.view('login', { loginFailed: true });
       } else {
-        req.cookieAuth.set({ current_user: req.payload.username });
+        req.cookieAuth.set({ username: req.payload.username });
         reply.redirect('/');
       }
     });
