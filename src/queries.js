@@ -50,12 +50,14 @@ queries.checkLogin = (payload, cb) => {
   const values = [payload.username];
   const sql = `SELECT * FROM users WHERE username = $1`;
   dbConn.query(sql, values, (err, data) => {
-    if (err) cb(err);
-    const result = data.rows[0];
-    Bcrypt.compare(password, result.password, (err, isMatch) => {
-      if (err) cb(err);
-      cb(null, isMatch);
-    });
+    if (err || data.rows.length === 0) cb(err);
+    else {
+      const result = data.rows[0];
+      Bcrypt.compare(password, result.password, (err, isMatch) => {
+        if (err) cb(err);
+        cb(null, isMatch);
+      });
+    }
   });
 };
 
