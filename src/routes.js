@@ -34,12 +34,12 @@ const fileServer = {
 
 const newResourceForm = {
   method: 'GET',
-  path: '/create-resource/{topic}',  //this request is fired from the list of resources page...
+  path: '/create-resource/{topic}',  // this request is fired from the list of resources page...
   handler (req, reply) {
     var topic = encodeURIComponent(req.params.topic);
     reply.view('new_resource_form', {topic});
   }
-}
+};
 
 const createResource = {
   method: 'POST',
@@ -48,9 +48,16 @@ const createResource = {
     queries.createResource(req.payload, (err, redirect) => {
       if (err) console.log('Unable to create resource', err);
       reply.redirect(redirect);
-    })
+    });
   }
-}
+};
+
+const login = {
+  method: 'GET',
+  path: '/login',
+  handler (req, reply) {
+    reply.view('login');
+  }
+};
 
 module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint];
-
