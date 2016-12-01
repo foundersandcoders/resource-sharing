@@ -60,4 +60,15 @@ const login = {
   }
 };
 
-module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint];
+const loginSubmit = {
+  method: 'POST',
+  path: '/login',
+  handler (req, reply) {
+    queries.checkLogin(req.payload, (err) => {
+      if (err) console.log('Unable to login', err);
+      reply.redirect('/');
+    });
+  }
+};
+
+module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint, login, loginSubmit];
