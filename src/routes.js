@@ -85,6 +85,14 @@ const logout = {
   }
 };
 
+const newReviewForm = {
+  method: 'GET',
+  path: '/create-review/{endpoint}',
+  handler (req, reply) {
+    reply.view('new_review_form', {endpoint});
+  }
+};
+
 module.exports = [
   home,
   fileServer,
