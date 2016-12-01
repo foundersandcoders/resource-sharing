@@ -29,3 +29,7 @@ body {
   display: block;
   margin: 180px auto;
 }
+
+.resource_btn {
+  margin-bottom: 10px;
+}
