@@ -6,14 +6,15 @@ CREATE TABLE IF NOT EXISTS users (
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
     email       TEXT       NOT NULL,
-    username    TEXT       UNIQUE
+    username    TEXT       UNIQUE,
+    password    TEXT       NOT NULL
 );
 
-INSERT INTO users(firstname, lastname, github, email, username) VALUES
-  ('Will', 'Savage', 'savagewilliam', 'will@fac.com', 'savagewilliam'),
-  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com', 'stevehopkinson'),
-  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com', 'lucymonie'),
-  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com', 'jsms90')
+INSERT INTO users(firstname, lastname, github, email, username, password) VALUES
+  ('Will', 'Savage', 'savagewilliam', 'will@fac.com', 'savagewilliam', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
+  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com', 'stevehopkinson', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
+  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com', 'lucymonie', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
+  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com', 'jsms90', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
