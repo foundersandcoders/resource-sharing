@@ -76,4 +76,13 @@ const loginSubmit = {
   }
 };
 
-module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint, login, loginSubmit];
+const logout = {
+  method: 'GET',
+  path: '/logout',
+  handler (req, reply) {
+    req.cookieAuth.clear();
+    reply.redirect('/');
+  }
+};
+
+module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint, login, loginSubmit, logout];
