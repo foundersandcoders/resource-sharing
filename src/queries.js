@@ -61,4 +61,22 @@ queries.checkLogin = (payload, cb) => {
   });
 };
 
+queries.registerUser = (payload, cb) => {
+  if (payload.password1 !== payload.password2) cb(`passwords don't match`);
+  else {
+    Bcrypt.hash(payload.password1, 10, (err, hash) => {
+      const values = [payload.firstname, payload.lastname, payload.github, payload.email, payload.username, hash];
+      const sql = `INSERT INTO users(firstname, lastname, github, email, username, password) VALUES
+                  ($1, $2, $3, $4, $5, $6) RETURNING id, username`;
+      dbConn.query(sql, values, (err, data) => {
+        if (err) cb(err);
+        else {
+          var userinfo = data.rows[0];
+          cb(null, userinfo);
+        }
+      });
+    });
+  }
+};
+
 module.exports = queries;
