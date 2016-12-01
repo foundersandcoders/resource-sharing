@@ -38,15 +38,16 @@ queries.createResource = (payload, cb) => {
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
-      var redirect = '/'; //later redirect to the resource that was created?
+      var redirect = '/'; // later redirect to the resource that was created?
       cb(null, redirect);
     }
   });
 };
 
 queries.createReview = (payload, cb) => {
-  console.log(payload, "review payload");
-  var values = [payload.rating, payload.endpoint, payload.content, payload.userid]
+  console.log(payload, 'review payload');
+  var values = [payload.rating, payload.endpoint, payload.content, payload.userid];
+  console.log(payload.endpoint);
   var sql = `INSERT INTO reviews(rating, resource_id, content, user_id)
               VALUES ($1, (SELECT id FROM resources WHERE endpoint = $2), $3, $4)
               RETURNING (
@@ -57,8 +58,8 @@ queries.createReview = (payload, cb) => {
   dbConn.query(sql, values, (err, data) => {
     if (err) cb(err);
     else {
-      var topicEndpoint = data.rows[0];
-      var redirect = `/${topicEndpoint}/${payload.endpoint}`;
+      var topic = data.rows[0];
+      var redirect = `/${topic.endpoint}/${payload.endpoint}`;
       cb(null, redirect);
     }
   });

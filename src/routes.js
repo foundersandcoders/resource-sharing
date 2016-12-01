@@ -101,6 +101,8 @@ const createReview = {
       if (err) console.log('Unable to create review', err);
       reply.redirect(redirect);
     });
+  }
+};
 
 const register = {
   method: 'GET',
@@ -114,11 +116,12 @@ const registerSubmit = {
   method: 'POST',
   path: '/register',
   handler (req, reply) {
-    console.log(`request coming in for creating new user ${req.payload.username}`)
+    console.log(`request coming in for creating new user ${req.payload.username}`);
     queries.registerUser(req.payload, (err, userinfo) => {
-      req.cookieAuth.set({ username: userinfo.username, userid: userinfo.id});
+      if (err) console.log(err);
+      req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
       reply.redirect('/');
-    })
+    });
   }
 };
 
@@ -134,5 +137,4 @@ module.exports = [
   newReviewForm,
   createReview,
   register,
-  registerSubmit
-];
+  registerSubmit];

@@ -4,7 +4,7 @@
   Review:
   <input type='text' name='content' placeholder='Write review here...' required><br>
   Rating:
-  <select name='rating' form='resourceForm' required>
+  <select name='rating' form='reviewForm' required>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -12,6 +12,6 @@
     <option value="5">5</option>
   </select>
   <input type='hidden' name='userid' value='{{credentials.userid}}'>
-  <input type='hidden' name='endpoint' value=`{{endpoint}}`>
+  <input type='hidden' name='endpoint' value='{{endpoint}}'>
   <input type='submit' value='submit'>
 </form>
