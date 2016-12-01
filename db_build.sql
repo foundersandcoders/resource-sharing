@@ -1,5 +1,7 @@
 BEGIN;
 
+DROP TABLE IF EXISTS users, topics, type, resources, reviews;
+
 CREATE TABLE IF NOT EXISTS users (
     id          SERIAL     PRIMARY KEY,
     firstname   TEXT       NOT NULL,
