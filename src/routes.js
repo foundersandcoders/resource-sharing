@@ -89,7 +89,7 @@ const newReviewForm = {
   method: 'GET',
   path: '/create-review/{endpoint}',
   handler (req, reply) {
-    reply.view('new_review_form', {endpoint});
+    reply.view('new_review_form', { endpoint: req.params.endpoint });
   }
 };
 
