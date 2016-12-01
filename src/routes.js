@@ -36,8 +36,14 @@ const fileServer = {
 const newResourceForm = {
   method: 'GET',
   path: '/create-resource',
-  handler (req, reply) {
-    reply.view('new_resource_form');
+  config: {
+    auth: {
+      mode: 'required',
+      strategy: 'session'
+      },
+    handler (req, reply) {
+      reply.view('new_resource_form');
+    }
   }
 };
 
