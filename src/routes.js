@@ -64,9 +64,14 @@ const loginSubmit = {
   method: 'POST',
   path: '/login',
   handler (req, reply) {
-    queries.checkLogin(req.payload, (err) => {
-      if (err) console.log('Unable to login', err);
-      reply.redirect('/');
+    queries.checkLogin(req.payload, (err, isMatch) => {
+      if (!isMatch || err) {
+        console.log('Unable to login');
+        reply.view('login', { loginFailed: true });
+      } else {
+        req.cookieAuth.set({ current_user: req.payload.username });
+        reply.redirect('/');
+      }
     });
   }
 };
