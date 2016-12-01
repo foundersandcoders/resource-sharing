@@ -52,6 +52,17 @@ const createResource = {
   }
 };
 
+const editResourceForm = {
+  method: 'GET',
+  path: '/edit-resource/{resourcesEndpoint}',
+  handler (req, reply) {
+    queries.getMyResource(req.params.resourcesEndpoint, (err, data) => {
+      if (err) console.log('Unable to retrieve resource', err);
+      reply.view('edit_resource', { data });
+    });
+  }
+};
+
 const login = {
   method: 'GET',
   path: '/login',
@@ -110,6 +121,7 @@ module.exports = [
   fileServer,
   newResourceForm,
   createResource,
+  editResourceForm,
   topicsEndpoint,
   login,
   loginSubmit,
