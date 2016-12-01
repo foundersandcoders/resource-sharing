@@ -2,7 +2,7 @@ body {
   background-color: #ddd;
 }
 
-.topics {
+.topics, .resources {
   font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
   display: inline-block;
   height: 200px;
@@ -16,13 +16,13 @@ body {
   background-repeat: no-repeat;
 }
 
-.topic_title {
+.topic_title, .resources_title {
   text-align: center;
   margin-top: -25px;
   margin-bottom: 15px;
 }
 
-.topic_btn {
+.topic_btn input {
   display: block;
-  margin: 0 auto;
+  margin: 180px auto;
 }
