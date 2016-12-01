@@ -34,7 +34,7 @@ const fileServer = {
 
 const newResourceForm = {
   method: 'GET',
-  path: '/create-resource/{topic}',  //this request is fired from the list of resources page...
+  path: '/create-resource',  //this request is fired from the list of resources page...
   handler (req, reply) {
     var topic = encodeURIComponent(req.params.topic);
     reply.view('new_resource_form', {topic});
@@ -53,4 +53,3 @@ const createResource = {
 }
 
 module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint];
-
