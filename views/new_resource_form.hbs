@@ -1,6 +1,20 @@
 
 <h2>Enter a resource for {{topic}}</h2>
 <form id='resourceForm' class='create_resource-form' action='submit' method='POST'>
+  <select name='topicid' form='resourceForm' required>
+    <option value='1'>HTML & CSS</option>
+    <option value='2'>Git & Github</option>
+    <option value='3'>Command Line</option>
+    <option value='4'>DOM Mainpulation</option>
+    <option value='5'>Testing</option>
+    <option value='6'>API</option>
+    <option value='7'>Node</option>
+    <option value='8'>Hapi</option>
+    <option value='9'>Handlebars</option>
+    <option value='10'>Databases</option>
+    <option value='11'>Authentication</option>
+    <option value='12'>UX & UI</option>
+  </select>
   Resource URL:
   <input type='text' name='url' placeholder='enter URL' required><br>
   Resource Title:
@@ -14,5 +28,6 @@
     <option value="5">IDE</option>
   </select>
   <input type='hidden' name='topic' value='{{topic}}'>
+  <input type='hidden' name='userid' value='{{userid}}'>
   <input type='submit' value='submit'>
 </form>
