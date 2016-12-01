@@ -5,7 +5,7 @@ body {
 .navbar {
   margin-bottom: 10px;
 }
-.topics, .resources {
+.topics, .resources, .reviews {
   font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
   display: inline-block;
   height: 200px;
@@ -19,7 +19,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.topic_title, .resources_title {
+.topic_title, .resources_title, .reviews_title {
   text-align: center;
   margin-top: -25px;
   margin-bottom: 15px;
