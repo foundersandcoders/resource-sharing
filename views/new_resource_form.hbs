@@ -1,11 +1,26 @@
 
 <h2>Enter a resource for {{topic}}</h2>
 <form id='resourceForm' class='create_resource-form' action='submit' method='POST'>
-  Resource URL:
+  URL:
   <input type='text' name='url' placeholder='enter URL' required><br>
-  Resource Title:
+  Title:
   <input type='text' name='title' placeholder='enter Title' required><br>
-  Resource Type:
+  Topic:
+  <select name='topicid' form='resourceForm' required>
+    <option value="1">HTML &amp CSS</option>
+    <option value="2">Git &amp Github</option>
+    <option value="3">Command Line</option>
+    <option value="4">DOM Manipulation</option>
+    <option value="5">Testing</option>
+    <option value="6">API</option>
+    <option value="7">Node</option>
+    <option value="8">Hapi</option>
+    <option value="9">Handlebars</option>
+    <option value="10">Databases</option>
+    <option value="11">Authentication</option>
+    <option value="12">UX &amp UI</option>
+  </select>
+  Type:
   <select name='typeid' form='resourceForm' required>
     <option value="1">Tutorial</option>
     <option value="2">Article</option>
