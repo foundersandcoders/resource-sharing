@@ -3,6 +3,7 @@ const Vision = require('vision');
 const Inert = require('inert');
 const Handlebars = require('handlebars');
 const CookieAuth = require('hapi-auth-cookie');
+const ContextCredentials = require('hapi-context-credentials');
 const routes = require('./routes.js');
 
 const server = new Hapi.Server();
@@ -11,10 +12,10 @@ server.connection({
   port: process.env.PORT || 4000
 });
 
-server.register([Vision, Inert, CookieAuth], (err) => {
+server.register([Vision, Inert, CookieAuth, ContextCredentials], (err) => {
   if (err) throw err;
 
-  server.auth.strategy('session', 'cookie', {
+  server.auth.strategy('session', 'cookie', 'optional', {
     password: 'datagangrulesokdatagangrulesokdatagangrulesok',
     cookie: 'datagang-cookie',
     isSecure: false,
