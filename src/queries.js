@@ -29,6 +29,17 @@ queries.getResources = (topicsEndpoint, cb) => {
   );
 };
 
+queries.getReviews = (resourcesEndpoint, cb) => {
+  const sql = `SELECT * FROM reviews
+                  LEFT OUTER JOIN resources ON (reviews.resource_id = resources.id)
+                  WHERE resources.endpoint=$1`;
+  const values = [resourcesEndpoint];
+  dbConn.query(sql, values, (err, data) => {
+    if (err) cb(err);
+    else cb(null, data.rows);
+  });
+};
+
 queries.createResource = (payload, cb) => {
   console.log(payload);
   var endpoint = convertToEndpoint(payload.title);
@@ -38,7 +49,7 @@ queries.createResource = (payload, cb) => {
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
-      var redirect = '/'; //later redirect to the resource that was created?
+      var redirect = '/'; // later redirect to the resource that was created?
       cb(null, redirect);
     }
   });
