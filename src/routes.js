@@ -95,9 +95,9 @@ const newReviewForm = {
 
 const createReview = {
   method: 'POST',
-  path: '/create-review/{endpoint}',
+  path: '/create-review',
   handler (req, reply) {
-    queries.createResource(req.payload, (err, redirect) => {
+    queries.createReview(req.payload, (err, redirect) => {
       if (err) console.log('Unable to create review', err);
       reply.redirect(redirect);
     });
@@ -112,4 +112,7 @@ module.exports = [
   topicsEndpoint,
   login,
   loginSubmit,
-  logout];
+  logout,
+  newReviewForm,
+  createReview
+];
