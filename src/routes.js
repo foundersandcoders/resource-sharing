@@ -23,6 +23,16 @@ const topicsEndpoint = {
   }
 };
 
+const resourceEndpoint = {
+  method: 'GET',
+  path: '/{topicsEndpoint}/{resourceEndpoint}',
+  handler (req, reply) {
+    queries.getResources(req.params.topicsEndpoint, (err, resources) => {
+      if (err) console.log('No resources were loaded!', err);
+      reply.view('resources', { resources });
+    });
+  }
+};
 const fileServer = {
   method: 'GET',
   path: '/static/{param*}',
@@ -93,4 +103,5 @@ module.exports = [
   topicsEndpoint,
   login,
   loginSubmit,
-  logout];
+  logout,
+  resourceEndpoint];
