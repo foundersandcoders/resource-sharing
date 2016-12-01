@@ -5,6 +5,7 @@ const home = {
   path: '/',
   handler (req, reply) {
     queries.getTopics((err, topics) => {
+      console.log(req.auth.credentials);
       if (err) console.log('No topics were loaded!', err);
       reply.view('topics', { topics });
     });
@@ -34,11 +35,11 @@ const fileServer = {
 
 const newResourceForm = {
   method: 'GET',
-  path: '/create-resource',  //this request is fired from the list of resources page...
+  path: '/create-resource',
   handler (req, reply) {
     reply.view('new_resource_form');
   }
-}
+};
 
 const createResource = {
   method: 'POST',
@@ -47,8 +48,49 @@ const createResource = {
     queries.createResource(req.payload, (err, redirect) => {
       if (err) console.log('Unable to create resource', err);
       reply.redirect(redirect);
-    })
+    });
   }
-}
+};
 
-module.exports = [home, fileServer, newResourceForm, createResource, topicsEndpoint];
+const login = {
+  method: 'GET',
+  path: '/login',
+  handler (req, reply) {
+    reply.view('login');
+  }
+};
+
+const loginSubmit = {
+  method: 'POST',
+  path: '/login',
+  handler (req, reply) {
+    queries.checkLogin(req.payload, (err, isMatch) => {
+      if (!isMatch || err) {
+        console.log('Unable to login');
+        reply.view('login', { loginFailed: true });
+      } else {
+        req.cookieAuth.set({ username: req.payload.username });
+        reply.redirect('/');
+      }
+    });
+  }
+};
+
+const logout = {
+  method: 'GET',
+  path: '/logout',
+  handler (req, reply) {
+    req.cookieAuth.clear();
+    reply.redirect('/');
+  }
+};
+
+module.exports = [
+  home,
+  fileServer,
+  newResourceForm,
+  createResource,
+  topicsEndpoint,
+  login,
+  loginSubmit,
+  logout];
