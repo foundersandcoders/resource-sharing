@@ -93,6 +93,17 @@ const newReviewForm = {
   }
 };
 
+const createReview = {
+  method: 'POST',
+  path: '/create-review/{endpoint}',
+  handler (req, reply) {
+    queries.createResource(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to create review', err);
+      reply.redirect(redirect);
+    });
+  }
+};
+
 module.exports = [
   home,
   fileServer,
