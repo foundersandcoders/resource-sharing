@@ -85,6 +85,14 @@ const logout = {
   }
 };
 
+const register = {
+  method: 'GET',
+  path: '/register',
+  handler (req, reply) {
+    reply.view('register');
+  }
+};
+
 module.exports = [
   home,
   fileServer,
@@ -93,4 +101,5 @@ module.exports = [
   topicsEndpoint,
   login,
   loginSubmit,
-  logout];
+  logout,
+  register];
