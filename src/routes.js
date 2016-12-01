@@ -69,7 +69,7 @@ const loginSubmit = {
         console.log('Unable to login');
         reply.view('login', { loginFailed: true });
       } else {
-        req.cookieAuth.set({ username: userInfo.username, id: userInfo.id });
+        req.cookieAuth.set({ username: userInfo.username, userid: userInfo.id });
         reply.redirect('/');
       }
     });
