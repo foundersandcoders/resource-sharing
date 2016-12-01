@@ -102,6 +102,25 @@ const logout = {
   }
 };
 
+const newReviewForm = {
+  method: 'GET',
+  path: '/create-review/{endpoint}',
+  handler (req, reply) {
+    reply.view('new_review_form', { endpoint: req.params.endpoint });
+  }
+};
+
+const createReview = {
+  method: 'POST',
+  path: '/create-review',
+  handler (req, reply) {
+    queries.createReview(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to create review', err);
+      reply.redirect(redirect);
+    });
+  }
+};
+
 const register = {
   method: 'GET',
   path: '/register',
@@ -114,11 +133,12 @@ const registerSubmit = {
   method: 'POST',
   path: '/register',
   handler (req, reply) {
-    console.log(`request coming in for creating new user ${req.payload.username}`)
+    console.log(`request coming in for creating new user ${req.payload.username}`);
     queries.registerUser(req.payload, (err, userinfo) => {
-      req.cookieAuth.set({ username: userinfo.username, userid: userinfo.id});
+      if (err) console.log(err);
+      req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
       reply.redirect('/');
-    })
+    });
   }
 };
 
@@ -132,5 +152,7 @@ module.exports = [
   login,
   loginSubmit,
   logout,
+  newReviewForm,
+  createReview,
   register,
   registerSubmit];
