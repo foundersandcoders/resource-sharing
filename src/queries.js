@@ -126,9 +126,9 @@ queries.registerUser = (payload, cb) => {
 queries.getReviewsByUser = (username, cb) => {
   const sql = 'SELECT * FROM reviews LEFT OUTER JOIN resources ON reviews.resource_id = resources.id LEFT OUTER JOIN users ON reviews.user_id = users.id WHERE username = $1;';
   const values = [username];
-  dbConn.query(sql, values, (err, result) => {
+  dbConn.query(sql, values, (err, data) => {
     if (err) cb(err);
-    else cb(null, result);
+    else cb(null, data.rows);
   });
 };
 
