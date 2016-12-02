@@ -64,7 +64,7 @@ queries.updateMyResource = (payload, cb) => {
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
-      var redirect = '/'; // later redirect to the resource that was updated and/or note that it was updated?
+      var redirect = '/{topicsEndpoint}'; // later redirect to the resource that was updated and/or note that it was updated?
       cb(null, redirect);
     }
   });
@@ -92,7 +92,7 @@ queries.createReview = (payload, cb) => {
 };
 
 queries.getMyResource = (resourcesEndpoint, cb) => {
-  dbConn.query(`SELECT url, resources.id AS resources_id, resources.title AS resources_title, type.label, topics.title AS topics_title FROM resources
+  dbConn.query(`SELECT url, resources.id AS resources_id, resources.title AS resources_title, type.label, topics.id AS topics_id, topics.title AS topics_title FROM resources
     LEFT OUTER JOIN topics ON topics.id=resources.topic_id LEFT OUTER JOIN type ON type.id=resources.type_id
     WHERE resources.endpoint=$1`, [resourcesEndpoint], (err, data) => {
       if (err) cb(err);
