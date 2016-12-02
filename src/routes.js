@@ -22,6 +22,14 @@ const fileServer = {
   }
 };
 
+const login = {
+  method: 'GET',
+  path: '/login',
+  handler (req, reply) {
+    reply.view('login');
+  }
+};
+
 const loginSubmit = {
   method: 'POST',
   path: '/login',
@@ -56,14 +64,6 @@ const registerSubmit = {
       req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
       reply.redirect('/');
     });
-  }
-};
-
-const login = {
-  method: 'GET',
-  path: '/login',
-  handler (req, reply) {
-    reply.view('login');
   }
 };
 
