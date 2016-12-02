@@ -127,6 +127,14 @@ const submitResource = {
   }
 };
 
+const editNoResource = {
+  method: 'GET',
+  path: '/edit-resource',
+  handler (req, reply) {
+    reply.redirect('/');
+  }
+};
+
 const editResource = {
   method: 'GET',
   path: '/edit-resource/{resourcesEndpoint}',
@@ -138,7 +146,6 @@ const editResource = {
   }
 };
 
-<<<<<<< HEAD
 const updateResource = {
   method: 'POST',
   path: '/edit-resource/submit',
@@ -147,13 +154,6 @@ const updateResource = {
       if (err) console.log('Unable to update resource', err);
       reply.redirect(redirect);
     });
-=======
-const editNoResource = {
-  method: 'GET',
-  path: '/edit-resource',
-  handler (req, reply) {
-    reply.redirect('/');
->>>>>>> 282c50a34840c3f1e2581496069ad42a55e584f5
   }
 };
 
