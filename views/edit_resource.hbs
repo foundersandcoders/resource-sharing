@@ -1,18 +1,32 @@
 
 <h2>Edit resource</h2>
 <form id='resourceForm' class='edit_resource' action='submit' method='POST'>
-  Resource URL:
-  <input type='text' name='url' value="{{data.url}}" required><br>
-  Resource Title:
+  Title:
   <input type='text' name='title' value="{{data.resources_title}}" required><br>
-  Resource Type:
+  URL:
+  <input type='text' name='url' value="{{data.url}}" required><br>
+  Topic:
+  <select name='topicid' form='resourceForm' required>
+    <option value='1'>HTML & CSS</option>
+    <option value='2'>Git & Github</option>
+    <option value='3'>Command Line</option>
+    <option value='4'>DOM Mainpulation</option>
+    <option value='5'>Testing</option>
+    <option value='6'>API</option>
+    <option value='7'>Node</option>
+    <option value='8'>Hapi</option>
+    <option value='9'>Handlebars</option>
+    <option value='10'>Databases</option>
+    <option value='11'>Authentication</option>
+    <option value='12'>UX & UI</option>
+  </select><br>
+  Type:
   <select name='typeid' form='resourceForm' required>
     <option value="1">Tutorial</option>
     <option value="2">Article</option>
     <option value="3">Reference</option>
     <option value="4">Video</option>
     <option value="5">IDE</option>
-  </select>
-  <input  name='topic' value="{{data.topics_title}}">
+  </select><br>
   <input type='submit' value='submit'>
 </form>
