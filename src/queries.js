@@ -90,17 +90,16 @@ queries.getMyResource = (resourcesEndpoint, cb) => {
   );
 };
 
-
 queries.updateMyResource = (payload, cb) => {
   console.log(payload);
-  var endpoint = convertToEndpoint(payload.title);
+  var endpoint = convertToEndpoint(payload.topictitle);
   console.log(endpoint);
-  var values = [payload.title, payload.url, payload.topicid, payload.typeid, endpoint, payload.resourceid];
+  var values = [payload.topictitle, payload.url, payload.topicid, payload.typeid, endpoint, payload.resourceid];
   var sql = `UPDATE resources SET title = $1, url = $2, topic_id = $3, type_id = $4, endpoint = $5 WHERE resources.id=$6`;
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
-      var redirect = '/{topicsEndpoint}'; // later redirect to the resource that was updated and/or note that it was updated?
+      var redirect = '/'; // later redirect to the resource that was updated and/or note that it was updated?
       cb(null, redirect);
     }
   });
