@@ -53,7 +53,11 @@ queries.getTopics = (cb) => {
 };
 
 queries.getResources = (topicsEndpoint, cb) => {
-  const sql = `SELECT resources.title, resources.endpoint, url FROM resources
+  const sql = `SELECT resources.title, resources.endpoint, url,
+               (SELECT COUNT(*) FROM reviews WHERE reviews.resource_id = resources.id) AS reviews_count,
+               (SELECT AVG(rating) FROM reviews WHERE reviews.resource_id = resources.id)::int AS reviews_avg,
+               (EXISTS (SELECT * FROM reviews WHERE reviews.resource_id = resources.id)) AS has_reviews 
+               FROM resources
                LEFT OUTER JOIN topics ON (resources.topic_id=topics.id)
                WHERE topics.endpoint=$1`;
   dbConn.query(sql, [topicsEndpoint], (err, data) => {
