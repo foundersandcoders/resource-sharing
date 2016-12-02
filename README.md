@@ -118,18 +118,26 @@ Create route & handler for rest of endpoints (apart from login & logout):
 
 
 ## Endpoints
-- **'/'** landing page displaying topics  
-- **'/{topicsEndpoint}'** resources by topic  
-- **'/{topicsEndpoint}/{resourceEndpoint}'** all reviews on specific resource  
-- **'/recent'** shows all reviews, by all users, in time order - most recent review first  
-- **'/users/{Username}'** all reviews written by this user  
-- **'/createResource'** form for user to add new resource  
-- **'/createReview/{resourceEndpoint}'** form for user to add their review  
-- **'/editResource'**  
-- **'/editReview'**  
-- **'/register'** create new user
-- **'/login'**  
-- **'/logout'**  
+Implemented:
+- GET :: /                                      Landing page
+- GET :: /login                                 Login page - enter username & password
+- POST :: /login/submit                         Successful login re-routes user to logged-in version of homepage
+- GET :: /register                              Registration form
+- POST :: /register/submit                      Adds new entry to users table in database, re-routes user to logged-in version of homepage
+- GET :: /logout                                Reroutes user to homepage, where they can no longer add a resource
+- GET :: /{topic_endpoint}                      Shows all resources associated with a particular topic  
+- GET :: /{topic_endpoint}/{resource_endpoint}  Shows all reviews associated with a particular topic  
+- GET :: /create-resource                       Show form for adding a resource to the website
+- POST :: /create-resource/submit               Adds resource to the website, redirects to /{topic_endpoint}
+- GET :: /edit-resource                         Show form for editing a user's own resource (same as form to add resource, but input fields are populated with current entries)
+- POST :: /edit-resource/submit                 Updates user's resource, redirects to /{topic_endpoint}
+- GET :: /create-review                         Show form for adding a review to the website
+- POST :: /create-review/submit                 Adds review to website, redirects user to /{topic_endpoint}/{resource_endpoint}
+
+To be implemented:
+- /reviews/recent                               Shows all reviews, by all users, in time order - most recent review first  
+- /users/{username}                             Shows all resources that have been uploaded/reviewed by a specific user
+
 
 ## Features:
 - I can log in.
