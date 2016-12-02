@@ -33,3 +33,8 @@ body {
 .resource_btn {
   margin-bottom: 10px;
 }
+
+#loginForm {
+  display: block;
+  margin: 0 auto;
+}

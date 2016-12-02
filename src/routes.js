@@ -116,8 +116,14 @@ const logout = {
 const newReviewForm = {
   method: 'GET',
   path: '/create-review/{endpoint}',
-  handler (req, reply) {
-    reply.view('new_review_form', { endpoint: req.params.endpoint });
+  config: {
+    auth: {
+      mode: 'required',
+      strategy: 'session'
+    },
+    handler (req, reply) {
+      reply.view('new_review_form', { endpoint: req.params.endpoint });
+    }
   }
 };
 
