@@ -97,7 +97,6 @@ const resourcesEndpoint = {
   handler (req, reply) {
     queries.getReviews(req.params.resourcesEndpoint, (err, reviews, title) => {
       if (err) console.log('No reviews were loaded!', err);
-      console.log(title, "THIS IS TITLE");
       reply.view('reviews', { reviews, title});
     });
   }

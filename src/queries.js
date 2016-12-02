@@ -96,7 +96,6 @@ queries.getReviews = (resourcesEndpoint, cb) => {
   WHERE resources.endpoint=$1`;
   const values = [resourcesEndpoint];
   dbConn.query(sql, values, (err, data) => {
-    console.log(data.rows,"HERE");
     if (err) cb(err);
     else {
       if (data.rows.length !== 0) var title = data.rows[0].title;
