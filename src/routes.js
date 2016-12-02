@@ -58,12 +58,16 @@ const registerSubmit = {
   method: 'POST',
   path: '/register',
   handler (req, reply) {
-    console.log(`request coming in for creating new user ${req.payload.username}`);
-    queries.registerUser(req.payload, (err, userinfo) => {
-      if (err) console.log(err);
-      req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
-      reply.redirect('/');
-    });
+    console.log(req.payload.password1, req.payload.password2);
+    if(req.payload.password1 !== req.payload.password2) {
+      reply.view('register', { password: true })
+    } else {
+      queries.registerUser(req.payload, (err, userinfo) => {
+        if (err) console.log(err);
+        req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
+        reply.redirect('/');
+      });
+    }
   }
 };
 
