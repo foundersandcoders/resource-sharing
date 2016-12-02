@@ -57,9 +57,9 @@ queries.getResources = (topicsEndpoint, cb) => {
                LEFT OUTER JOIN topics ON (resources.topic_id=topics.id)
                WHERE topics.endpoint=$1`;
   dbConn.query(sql, [topicsEndpoint], (err, data) => {
-      if (err) cb(err);
-      else cb(null, data.rows);
-    }
+    if (err) cb(err);
+    else cb(null, data.rows);
+  }
   );
 };
 
@@ -117,6 +117,15 @@ queries.createReview = (payload, cb) => {
       var redirect = `/${topic.endpoint}/${payload.endpoint}`;
       cb(null, redirect);
     }
+  });
+};
+
+queries.getReviewsByUser = (username, cb) => {
+  const sql = 'SELECT * FROM reviews LEFT OUTER JOIN resources ON reviews.resource_id = resources.id LEFT OUTER JOIN users ON reviews.user_id = users.id WHERE username = $1;';
+  const values = [username];
+  dbConn.query(sql, values, (err, data) => {
+    if (err) cb(err);
+    else cb(null, data.rows);
   });
 };
 

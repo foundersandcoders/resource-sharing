@@ -171,6 +171,18 @@ const submitReview = {
   }
 };
 
+const reviewsByUser = {
+  method: 'GET',
+  path: '/users/{username}',
+  handler (req, reply) {
+    var username = encodeURIComponent(req.params.username);
+    queries.getReviewsByUser(username, (err, reviews) => {
+      if (err) console.log(err);
+      reply.view('reviews_by_user', { username, reviews });
+    });
+  }
+};
+
 module.exports = [
   home,
   fileServer,
@@ -186,5 +198,6 @@ module.exports = [
   editResource,
   editNoResource,
   createReview,
-  submitReview
+  submitReview,
+  reviewsByUser
 ];
