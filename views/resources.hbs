@@ -1,6 +1,9 @@
+
 {{#each resources}}
-  <section style="display:inline-block">
-   <h3>{{this.title}}</h3>
-   <a href={{this.url}}>Visit this resource</a>
-  </section>
-{{/each}}
+   <section class="resources" style="display:inline-block">
+     <h3 class= "resource_title">{{this.title}}</h3>
+     <a class ="resource_btn" href={{this.url}}>Visit this resource</a><br>
+     <a class ="resource_btn" href='/create-review/{{this.endpoint}}'>Write review</a><br>
+     <a class ="resource_btn" href="/edit-resource/{{this.endpoint}}">Edit</a><br>
+    </section>
+  {{/each}}

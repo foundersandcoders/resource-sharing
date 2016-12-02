@@ -1,19 +1,22 @@
 BEGIN;
 
+DROP TABLE IF EXISTS users, topics, type, resources, reviews;
+
 CREATE TABLE IF NOT EXISTS users (
     id          SERIAL     PRIMARY KEY,
     firstname   TEXT       NOT NULL,
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
     email       TEXT       NOT NULL,
-    username    TEXT       UNIQUE
+    username    TEXT       UNIQUE,
+    password    TEXT       NOT NULL
 );
 
-INSERT INTO users(firstname, lastname, github, email, username) VALUES
-  ('Will', 'Savage', 'savagewilliam', 'will@fac.com', 'savagewilliam'),
-  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com', 'stevehopkinson'),
-  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com', 'lucymonie'),
-  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com', 'jsms90')
+INSERT INTO users(firstname, lastname, github, email, username, password) VALUES
+  ('Will', 'Savage', 'savagewilliam', 'will@fac.com', 'savagewilliam', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
+  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com', 'stevehopkinson', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
+  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com', 'lucymonie', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
+  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com', 'jsms90', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS topics (
@@ -63,15 +66,15 @@ CREATE TABLE IF NOT EXISTS resources (
   endpoint     TEXT        UNIQUE
 );
 
-INSERT INTO resources(title, url, topic_id, type_id, user_id) VALUES
-  ('How it feels to code Javascript in 2016', 'https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.lxto065k1', '1', '2', '1'),
-  ('How to write testable JavaScript', 'https://www.youtube.com/watch?v=OzjogCFO4Zo', '5', '4', '1'),
-  ('Learn to code HTML & CSS', 'http://learn.shayhowe.com/html-css/', '1', '1', '2')
+INSERT INTO resources(title, url, topic_id, type_id, user_id, endpoint) VALUES
+  ('How it feels to code Javascript in 2016', 'https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.lxto065k1', '1', '2', '1', 'how-it-feels-to-code-javascript-in-2016'),
+  ('How to write testable JavaScript', 'https://www.youtube.com/watch?v=OzjogCFO4Zo', '5', '4', '1', 'how-to-write-testable-javascript'),
+  ('Learn to code HTML & CSS', 'http://learn.shayhowe.com/html-css/', '1', '1', '2', 'learn-to-code-html--css')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS reviews (
   id           SERIAL      PRIMARY KEY,
-  timecreated  TIMESTAMP   NOT NULL,
+  timestamp    TIMESTAMP   DEFAULT      current_timestamp,
   rating       SMALLINT    NOT NULL     CHECK (rating > 0 AND rating < 6),
   resource_id  INTEGER     NOT NULL     REFERENCES resources(id),
   content      TEXT        NOT NULL,
