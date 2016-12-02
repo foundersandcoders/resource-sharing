@@ -53,7 +53,7 @@ queries.getTopics = (cb) => {
 };
 
 queries.getResources = (topicsEndpoint, cb) => {
-  const sql = `SELECT resources.title, resources.endpoint, url FROM resources
+  const sql = `SELECT resources.title, resources.endpoint, url, topics.endpoint AS topics_endpoint FROM resources
                LEFT OUTER JOIN topics ON (resources.topic_id=topics.id)
                WHERE topics.endpoint=$1`;
   dbConn.query(sql, [topicsEndpoint], (err, data) => {
