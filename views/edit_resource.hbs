@@ -1,10 +1,10 @@
 
-<h2>Create a Resource</h2>
-<form id='resourceForm' class='create_resource-form' action='/create-resource/submit' method='POST'>
+<h2>Edit resource</h2>
+<form id='resourceForm' class='edit_resource' action='submit' method='POST'>
   Title:
-  <input type='text' name='title' placeholder='enter Title' required><br>
+  <input type='text' name='title' value="{{data.resources_title}}" required><br>
   URL:
-  <input type='text' name='url' placeholder='enter URL' required><br>
+  <input type='text' name='url' value="{{data.url}}" required><br>
   Topic:
   <select name='topicid' form='resourceForm' required>
     <option value='1'>HTML & CSS</option>
@@ -28,6 +28,5 @@
     <option value="4">Video</option>
     <option value="5">IDE</option>
   </select><br>
-  <input type='hidden' name='userid' value='{{credentials.userid}}'>
   <input type='submit' value='submit'>
 </form>

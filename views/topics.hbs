@@ -1,11 +1,10 @@
 <!-- below is test code to test our server -->
 {{#each topics}}
 
-  <section class="topics">
-    <h3>{{this.title}}</h3>
-    <img class="topic_image" src= "/static/images/{{this.image_path}}">
-    <form action = {{this.endpoint}} method = "get">
-      <input type="submit" value="Submit">
+  <section class="topics" style="background-image:url(/static/images/{{this.image_path}})">
+    <h3 class = "topic_title">{{this.title}}</h3>
+    <form class="topic_btn" action = {{this.endpoint}} method="get">
+      <input type="submit" value="Get Resources">
    </form>
   </section>
 

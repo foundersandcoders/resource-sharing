@@ -3,10 +3,25 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/main.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/images/favicon.ico" type="image/x-icon" />
     <title>FAC Resources</title>
   </head>
   <body>
+    <nav class="navbar">
+      <ul class="navbar__list">
+        <li class="navbar__listitem"><a href="/">Home</a></li>
+        {{# if credentials}}
+          <li class="navbar__listitem">Logged in as {{credentials.username}}</li>
+          <li class="navbar__listitem"><a href="/create-resource">Share something</a></li>
+          <li class="navbar__listitem"><a href="/logout">Logout</a></li>
+        {{else}}
+          <li class="navbar__listitem"><a href="/login">Login</a></li>
+          <li class="navbar__listitem"><a href="/register">Register</a></li>
+        {{/if}}
+      </ul>
+    </nav>
     {{{content}}}
   </body>
 </html>
