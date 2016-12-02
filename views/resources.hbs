@@ -1,9 +1,12 @@
-
 {{#each resources}}
    <section class="resources" style="display:inline-block">
      <h3 class= "resource_title">{{this.title}}</h3>
      <a class ="resource_btn" href={{this.url}}>Visit this resource</a><br>
+     {{# if ../credentials}}
      <a class ="resource_btn" href='/create-review/{{this.endpoint}}'>Write review</a><br>
      <a class ="resource_btn" href="/edit-resource/{{this.endpoint}}">Edit</a><br>
+     {{else}}
+     <p>Login/register to add a review</p>
+     {{/if}}
     </section>
   {{/each}}

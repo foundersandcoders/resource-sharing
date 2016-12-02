@@ -1,12 +1,13 @@
-
-{{#if loginFailed}}
-  <p>Login failed. Please check your username and password and try again.</p>
-{{/if}}
-<h2>Enter your username and password</h2>
-<form id='loginForm' class='login-form' action='/login' method='POST'>
-  Username:
-  <input type='text' name='username' placeholder='Username' required><br>
-  Password:
-  <input type='password' name='password' placeholder='Password' required><br>
-  <input type='submit' value='submit'>
-</form>
+<section id="loginForm">
+  {{#if loginFailed}}
+    <p>Login failed. Please check your username and password and try again.</p>
+  {{/if}}
+  <h2>Enter your username and password</h2>
+  <form id='loginForm' class='login-form' action='/login' method='POST'>
+    Username:
+    <input type='text' name='username' placeholder='Username' required><br>
+    Password:
+    <input type='password' name='password' placeholder='Password' required><br>
+    <input type='submit' value='submit'>
+  </form>
+</section>

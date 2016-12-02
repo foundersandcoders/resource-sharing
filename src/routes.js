@@ -12,28 +12,6 @@ const home = {
   }
 };
 
-const topicsEndpoint = {
-  method: 'GET',
-  path: '/{topicsEndpoint}',
-  handler (req, reply) {
-    queries.getResources(req.params.topicsEndpoint, (err, resources) => {
-      if (err) console.log('No resources were loaded!', err);
-      reply.view('resources', { resources });
-    });
-  }
-};
-
-const resourcesEndpoint = {
-  method: 'GET',
-  path: '/{topicsEndpoint}/{resourcesEndpoint}',
-  handler (req, reply) {
-    queries.getReviews(req.params.resourcesEndpoint, (err, reviews) => {
-      if (err) console.log('No reviews were loaded!', err);
-      reply.view('reviews', { reviews });
-    });
-  }
-};
-
 const fileServer = {
   method: 'GET',
   path: '/static/{param*}',
@@ -41,61 +19,6 @@ const fileServer = {
     directory: {
       path: 'public'
     }
-  }
-};
-
-const newResourceForm = {
-  method: 'GET',
-  path: '/create-resource',
-  config: {
-    auth: {
-      mode: 'required',
-      strategy: 'session'
-    },
-    handler (req, reply) {
-      reply.view('new_resource_form');
-    }
-  }
-};
-
-const createResource = {
-  method: 'POST',
-  path: '/create-resource/submit',
-  handler (req, reply) {
-    queries.createResource(req.payload, (err, redirect) => {
-      if (err) console.log('Unable to create resource', err);
-      reply.redirect(redirect);
-    });
-  }
-};
-
-const editResourceForm = {
-  method: 'GET',
-  path: '/edit-resource/{resourcesEndpoint}',
-  handler (req, reply) {
-    queries.getMyResource(req.params.resourcesEndpoint, (err, data) => {
-      if (err) console.log('Unable to retrieve resource', err);
-      reply.view('edit_resource', { data });
-    });
-  }
-};
-
-const updateResource = {
-  method: 'POST',
-  path: '/edit-resource/submit',
-  handler (req, reply) {
-    queries.updateMyResource(req.payload, (err, redirect) => {
-      if (err) console.log('Unable to update resource', err);
-      reply.redirect(redirect);
-    });
-  }
-};
-
-const login = {
-  method: 'GET',
-  path: '/login',
-  handler (req, reply) {
-    reply.view('login');
   }
 };
 
@@ -111,34 +34,6 @@ const loginSubmit = {
         req.cookieAuth.set({ username: userInfo.username, userid: userInfo.id });
         reply.redirect('/');
       }
-    });
-  }
-};
-
-const logout = {
-  method: 'GET',
-  path: '/logout',
-  handler (req, reply) {
-    req.cookieAuth.clear();
-    reply.redirect('/');
-  }
-};
-
-const newReviewForm = {
-  method: 'GET',
-  path: '/create-review/{endpoint}',
-  handler (req, reply) {
-    reply.view('new_review_form', { endpoint: req.params.endpoint });
-  }
-};
-
-const createReview = {
-  method: 'POST',
-  path: '/create-review',
-  handler (req, reply) {
-    queries.createReview(req.payload, (err, redirect) => {
-      if (err) console.log('Unable to create review', err);
-      reply.redirect(redirect);
     });
   }
 };
@@ -164,19 +59,131 @@ const registerSubmit = {
   }
 };
 
+const login = {
+  method: 'GET',
+  path: '/login',
+  handler (req, reply) {
+    reply.view('login');
+  }
+};
+
+const logout = {
+  method: 'GET',
+  path: '/logout',
+  handler (req, reply) {
+    req.cookieAuth.clear();
+    reply.redirect('/');
+  }
+};
+
+const topicsEndpoint = {
+  method: 'GET',
+  path: '/{topicsEndpoint}',
+  handler (req, reply) {
+    queries.getResources(req.params.topicsEndpoint, (err, resources) => {
+      if (err) console.log('No resources were loaded!', err);
+      reply.view('resources', { resources });
+    });
+  }
+};
+
+const resourcesEndpoint = {
+  method: 'GET',
+  path: '/{topicsEndpoint}/{resourcesEndpoint}',
+  handler (req, reply) {
+    queries.getReviews(req.params.resourcesEndpoint, (err, reviews) => {
+      if (err) console.log('No reviews were loaded!', err);
+      reply.view('reviews', { reviews });
+    });
+  }
+};
+
+const createResource = {
+  method: 'GET',
+  path: '/create-resource',
+  config: {
+    auth: {
+      mode: 'required',
+      strategy: 'session'
+    },
+    handler (req, reply) {
+      reply.view('new_resource_form');
+    }
+  }
+};
+
+const submitResource = {
+  method: 'POST',
+  path: '/create-resource/submit',
+  handler (req, reply) {
+    queries.createResource(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to create resource', err);
+      reply.redirect(redirect);
+    });
+  }
+};
+
+const editResource = {
+  method: 'GET',
+  path: '/edit-resource/{resourcesEndpoint}',
+  handler (req, reply) {
+    queries.getMyResource(req.params.resourcesEndpoint, (err, data) => {
+      if (err) console.log('Unable to retrieve resource', err);
+      reply.view('edit_resource', { data });
+    });
+  }
+};
+
+const updateResource = {
+  method: 'POST',
+  path: '/edit-resource/submit',
+  handler (req, reply) {
+    queries.updateMyResource(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to update resource', err);
+      reply.redirect(redirect);
+    });
+  }
+};
+
+const createReview = {
+  method: 'GET',
+  path: '/create-review/{endpoint}',
+  config: {
+    auth: {
+      mode: 'required',
+      strategy: 'session'
+    },
+    handler (req, reply) {
+      reply.view('new_review_form', { endpoint: req.params.endpoint });
+    }
+  }
+};
+
+const submitReview = {
+  method: 'POST',
+  path: '/create-review/submit',
+  handler (req, reply) {
+    queries.createReview(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to create review', err);
+      reply.redirect(redirect);
+    });
+  }
+};
+
 module.exports = [
   home,
   fileServer,
-  newResourceForm,
-  createResource,
-  editResourceForm,
   updateResource,
-  topicsEndpoint,
-  resourcesEndpoint,
   login,
   loginSubmit,
-  logout,
-  newReviewForm,
-  createReview,
   register,
-  registerSubmit];
+  registerSubmit,
+  logout,
+  topicsEndpoint,
+  resourcesEndpoint,
+  createResource,
+  submitResource,
+  editResource,
+  createReview,
+  submitReview
+];
