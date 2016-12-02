@@ -58,12 +58,16 @@ const registerSubmit = {
   method: 'POST',
   path: '/register',
   handler (req, reply) {
-    console.log(`request coming in for creating new user ${req.payload.username}`);
-    queries.registerUser(req.payload, (err, userinfo) => {
-      if (err) console.log(err);
-      req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
-      reply.redirect('/');
-    });
+    console.log(req.payload.password1, req.payload.password2);
+    if(req.payload.password1 !== req.payload.password2) {
+      reply.view('register', { password: true })
+    } else {
+      queries.registerUser(req.payload, (err, userinfo) => {
+        if (err) console.log(err);
+        req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
+        reply.redirect('/');
+      });
+    }
   }
 };
 
@@ -134,6 +138,7 @@ const editResource = {
   }
 };
 
+<<<<<<< HEAD
 const updateResource = {
   method: 'POST',
   path: '/edit-resource/submit',
@@ -142,6 +147,13 @@ const updateResource = {
       if (err) console.log('Unable to update resource', err);
       reply.redirect(redirect);
     });
+=======
+const editNoResource = {
+  method: 'GET',
+  path: '/edit-resource',
+  handler (req, reply) {
+    reply.redirect('/');
+>>>>>>> 282c50a34840c3f1e2581496069ad42a55e584f5
   }
 };
 
@@ -184,6 +196,7 @@ module.exports = [
   createResource,
   submitResource,
   editResource,
+  editNoResource,
   createReview,
   submitReview
 ];
