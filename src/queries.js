@@ -59,9 +59,8 @@ queries.updateMyResource = (payload, cb) => {
   console.log(payload);
   var endpoint = convertToEndpoint(payload.title);
   console.log(endpoint);
-  var values = [payload.title, payload.url, payload.topicid, payload.typeid, payload.userid, endpoint, payload.resourceid];
-  var sql = `UPDATE resources SET (title, url, topic_id, type_id, user_id, endpoint)
-  VALUES ($1, $2, $3, $4, $5, $6) WHERE resources.id=$7`;
+  var values = [payload.title, payload.url, payload.topicid, payload.typeid, endpoint, payload.resourceid];
+  var sql = `UPDATE resources SET title = $1, url = $2, topic_id = $3, type_id = $4, endpoint = $5 WHERE resources.id=$6`;
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
