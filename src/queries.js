@@ -55,6 +55,22 @@ queries.createResource = (payload, cb) => {
   });
 };
 
+queries.updateMyResource = (payload, cb) => {
+  console.log(payload);
+  var endpoint = convertToEndpoint(payload.title);
+  console.log(endpoint);
+  var values = [payload.title, payload.url, payload.topicid, payload.typeid, payload.userid, endpoint, payload.resourceid];
+  var sql = `UPDATE resources SET (title, url, topic_id, type_id, user_id, endpoint)
+  VALUES ($1, $2, $3, $4, $5, $6) WHERE resources.id=$7`;
+  dbConn.query(sql, values, (err) => {
+    if (err) cb(err);
+    else {
+      var redirect = '/'; // later redirect to the resource that was updated and/or note that it was updated?
+      cb(null, redirect);
+    }
+  });
+};
+
 queries.createReview = (payload, cb) => {
   console.log(payload, 'review payload');
   var values = [payload.rating, payload.endpoint, payload.content, payload.userid];
@@ -77,7 +93,7 @@ queries.createReview = (payload, cb) => {
 };
 
 queries.getMyResource = (resourcesEndpoint, cb) => {
-  dbConn.query(`SELECT url, resources.title AS resources_title, type.label, topics.title AS topics_title FROM resources
+  dbConn.query(`SELECT url, resources.id AS resources_id, resources.title AS resources_title, type.label, topics.title AS topics_title FROM resources
     LEFT OUTER JOIN topics ON topics.id=resources.topic_id LEFT OUTER JOIN type ON type.id=resources.type_id
     WHERE resources.endpoint=$1`, [resourcesEndpoint], (err, data) => {
       if (err) cb(err);

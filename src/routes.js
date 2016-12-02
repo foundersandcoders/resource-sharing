@@ -80,6 +80,17 @@ const editResourceForm = {
   }
 };
 
+const updateResource = {
+  method: 'POST',
+  path: '/edit-resource/submit',
+  handler (req, reply) {
+    queries.updateMyResource(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to update resource', err);
+      reply.redirect(redirect);
+    });
+  }
+};
+
 const login = {
   method: 'GET',
   path: '/login',
@@ -159,6 +170,7 @@ module.exports = [
   newResourceForm,
   createResource,
   editResourceForm,
+  updateResource,
   topicsEndpoint,
   resourcesEndpoint,
   login,
