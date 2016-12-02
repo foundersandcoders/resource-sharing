@@ -17,7 +17,7 @@ queries.checkLogin = (payload, cb) => {
     if (err || data.rows.length === 0) cb(err);
     else {
       const userInfo = data.rows[0];
-      Bcrypt.compare(password, userInfo.password, (err, isMatch) => {
+      Bcrypt.compare(payload.password, userInfo.password, (err, isMatch) => {
         if (err || !isMatch) cb(err);
         cb(null, userInfo);
       });
