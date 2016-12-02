@@ -66,9 +66,9 @@ queries.getResources = (topicsEndpoint, cb) => {
 queries.createResource = (payload, cb) => {
   console.log(payload);
   const endpoint = convertToEndpoint(payload.title);
-  var values = [payload.title, payload.url, payload.topicid, payload.typeid, payload.userid, endpoint];
   const sql = `INSERT INTO resources(title, url, topic_id, type_id, user_id, endpoint)
   VALUES ($1, $2, $3, $4, $5, $6)`;
+  var values = [payload.title, payload.url, payload.topicid, payload.typeid, payload.userid, endpoint];
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
