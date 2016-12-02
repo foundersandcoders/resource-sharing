@@ -127,6 +127,14 @@ const submitResource = {
   }
 };
 
+const editNoResource = {
+  method: 'GET',
+  path: '/edit-resource',
+  handler (req, reply) {
+    reply.redirect('/');
+  }
+};
+
 const editResource = {
   method: 'GET',
   path: '/edit-resource/{resourcesEndpoint}',
@@ -138,11 +146,14 @@ const editResource = {
   }
 };
 
-const editNoResource = {
-  method: 'GET',
-  path: '/edit-resource',
+const updateResource = {
+  method: 'POST',
+  path: '/edit-resource/submit',
   handler (req, reply) {
-    reply.redirect('/');
+    queries.updateMyResource(req.payload, (err, redirect) => {
+      if (err) console.log('Unable to update resource', err);
+      reply.redirect(redirect);
+    });
   }
 };
 
@@ -186,6 +197,7 @@ const reviewsByUser = {
 module.exports = [
   home,
   fileServer,
+  updateResource,
   login,
   loginSubmit,
   register,

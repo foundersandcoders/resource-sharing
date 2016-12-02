@@ -3,11 +3,12 @@
      <h3 class= "resource_title">{{this.title}}</h3>
      <p>{{this.reviews_count}} reviews{{# if this.has_reviews}}, average rating {{this.reviews_avg}}{{/if}}</p>
      <a class ="resource_btn" href={{this.url}}>Visit this resource</a><br>
+     <a class="resource_btn" href='/{{this.topics_endpoint}}/{{this.endpoint}}'{{this.url}}>See reviews</a><br>
      {{# if ../credentials}}
-     <a class ="resource_btn" href='/create-review/{{this.endpoint}}'>Write review</a><br>
-     <a class ="resource_btn" href="/edit-resource/{{this.endpoint}}">Edit</a><br>
+       <a class="resource_btn" href='/create-review/{{this.endpoint}}'>Write review</a><br>
+       <a class="resource_btn" href="/edit-resource/{{this.endpoint}}">Edit</a><br>
      {{else}}
-     <p>Login/register to add a review</p>
+       <p>Login/register to add a review</p>
      {{/if}}
-    </section>
-  {{/each}}
+  </section>
+{{/each}}
