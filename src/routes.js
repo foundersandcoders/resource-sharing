@@ -144,7 +144,7 @@ const createReview = {
 
 const submitReview = {
   method: 'POST',
-  path: '/create-review',
+  path: '/create-review/submit',
   handler (req, reply) {
     queries.createReview(req.payload, (err, redirect) => {
       if (err) console.log('Unable to create review', err);
