@@ -134,6 +134,14 @@ const editResource = {
   }
 };
 
+const editNoResource = {
+  method: 'GET',
+  path: '/edit-resource',
+  handler (req, reply) {
+    reply.redirect('/');
+  }
+};
+
 const createReview = {
   method: 'GET',
   path: '/create-review/{endpoint}',
@@ -172,6 +180,7 @@ module.exports = [
   createResource,
   submitResource,
   editResource,
+  editNoResource,
   createReview,
   submitReview
 ];
