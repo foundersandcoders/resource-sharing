@@ -1,29 +1,26 @@
-# data-gang
+# Resource sharing website
 
-Problem:  
-FAC members share resources (i.e. articles, videos, tutorials, etc.) with each other on gitter. But resources shared a while ago are likely to get lost. It would be good to have a place to store them.  
-We have the notes repo, but adding a new resource is too time consuming. A repo format is also not very useful for searching or accessing resources suggested by others.
+1. [What](#what)
+2. [Why](#why)
+  - [User stories](#user-stories)
+    - [Sub stories](#sub-stories)
+3. [How](#how)
+  - [Features](#features)
+  - [Schema](#schema)
+  - [Endpoints](#endpoints)
+4. [How to run our website on your local machine](#how-to-run-our-website-on-your-local-machine)
 
-Solution:  
-A website where FAC members can upload, access and review all our favourite resources.
+## What
+A website for FAC members to share resources with each other.
 
-1. [How to run our website on your local machine](#how-to-run-our-website-on-your-local-machine)
-2. [User stories](#user-stories)
-3. [Project plan](#project-plan)
-4. [Schema](#schema)
-5. [Endpoints](#endpoints)
-6. [Features](#features)
+## Why
+This has been designed to solve the flaws in our current sharing methods:
+- old links getting lost in the long gitter channel history
+- no categorision makes searching through the list of resources difficult
+- the "notes" repo makes it hard to share links quickly enough
+- reasons for the recommendations may only be shared with a few people via word of mouth
 
-
-## How to run our website on your local machine
-- Clone our repo & `cd` into the data_gang folder
-- Run `npm install` in your terminal
-- Log in to psql and create new database
-- Add a `config.env` file to the root directory (ask one of us for the contents, if you think we will trust you :O)
-- Run `npm start`
-
-
-## User stories
+### User stories
 **As** a member of the current FAC cohort,  
 **I want to** find the best resource by topic,  
 **so that** I can extend my learning each week.
@@ -54,7 +51,7 @@ _retain the same database - don't create a new one each FAC_
 _enable more than just the current cohort to have access_
 
 
-### Sub stories
+#### Sub stories
 **As** a busy FACer who doesn't have much time,  
 **I want to** share my resource as quickly as possible,  
 **so that** I can get back to building my project asap.  
@@ -75,49 +72,34 @@ _should be able to find resources based on recommendation (e.g. rating, review)_
 
 _list only the resources that have been uploaded/reviewed by a particular user_
 
+## How
+### Features:
+Login: only FAC members can perform CRUD operations on the site (no delete option for now - until we see a use case).
 
-## Project plan
-### Tuesday
-#### Morning
-Choose Idea
-User stories
-Wireframing
-Features
-Schema
+Register: should require admin authorisation.
 
-#### Afternoon
-Get environment set up:
-File structure
-Install dependencies - hapi, handlebars, pg
-Initialise database
+View list of resources primarily by topic - website to be organised around the structure of the FAC course.
 
-### Wednesday
-#### Morning
-Integrate index.js, db_build.js & db_build.sql - make sure `node index.js` works as expected
-Create route & handler for '/' endpoint
-Create helper function (queries.js) to use in handler
+Filter resources by:
+- rating
+- time of upload
+- user
 
-#### Afternoon
-Create route & handler for rest of endpoints (apart from login & logout):
-- '/{topicsEndpoint}' resources by topic
-- '/{topicsEndpoint}/{resourceEndpoint}' all reviews on specific resource
-- '/recent' shows all reviews, by all users, in time order - most recent review first
-- '/users/{Username}' all reviews written by this user
-- '/createResource' form for user to add new resource
-- '/createReview/{resourceEndpoint}' form for user to add their review
-- '/editResource'
-- '/editReview'
+All users can:
+- view resources & reviews (using all available filters)
 
-### Thursday
+Logged-in users can also:
+- create & edit their own resources & reviews
+- add their rating to a resource
 
+Admin users can:
+- add & update topics - to accommodate for a changing curriculum
 
-
-## Schema
+### Schema
 
 ![schema](resources/database-schema.png)
 
-
-## Endpoints
+### Endpoints
 Implemented:
 - GET :: /                                      Landing page
 - GET :: /login                                 Login page - enter username & password
@@ -133,16 +115,14 @@ Implemented:
 - POST :: /edit-resource/submit                 Updates user's resource, redirects to /{topic_endpoint}
 - GET :: /create-review                         Show form for adding a review to the website
 - POST :: /create-review/submit                 Adds review to website, redirects user to /{topic_endpoint}/{resource_endpoint}
+- /users/{username}                             Shows all resources that have been uploaded/reviewed by a specific user
 
 To be implemented:
 - /reviews/recent                               Shows all reviews, by all users, in time order - most recent review first  
-- /users/{username}                             Shows all resources that have been uploaded/reviewed by a specific user
 
-
-## Features:
-- I can log in.
-- I can see a list of resources.
-- I can see a list of recently uploaded resources.
-- I can create, edit and view my own resources & reviews.
-- I can see a list of reviews of a particular resource.
-- (optional extra) I can see a list of resources/reviews by a particular user.
+## How to run our website on your local machine
+- Clone our repo & `cd` into the data_gang folder
+- Run `npm install` in your terminal
+- Log in to psql and create new database
+- Add a `config.env` file to the root directory (ask one of us for the contents, if you think we will trust you :O)
+- Run `npm start`
