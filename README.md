@@ -121,8 +121,12 @@ To be implemented:
 - /reviews/recent                               Shows all reviews, by all users, in time order - most recent review first  
 
 ## How to run our website on your local machine
-- Clone our repo & `cd` into the data_gang folder
+- Clone our repo & `cd` into the resource-sharing folder
 - Run `npm install` in your terminal
 - Log in to psql and create new database
-- Add a `config.env` file to the root directory (ask one of us for the contents, if you think we will trust you :O)
+- Add a `config.env` file to the root directory:
+```
+export DB_URL=postgres://your-username:your-password@localhost:5432/data_gang
+export DB_MAX_CONNECTIONS=2
+```
 - Run `npm start`
