@@ -95,9 +95,9 @@ const resourcesEndpoint = {
   method: 'GET',
   path: '/{topicsEndpoint}/{resourcesEndpoint}',
   handler (req, reply) {
-    queries.getReviews(req.params.resourcesEndpoint, (err, reviews) => {
+    queries.getReviews(req.params.resourcesEndpoint, (err, reviews, title) => {
       if (err) console.log('No reviews were loaded!', err);
-      reply.view('reviews', { reviews });
+      reply.view('reviews', { reviews, title});
     });
   }
 };

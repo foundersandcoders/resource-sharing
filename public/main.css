@@ -5,6 +5,7 @@ body {
 .navbar {
   margin-bottom: 10px;
 }
+
 .topics, .resources, .reviews {
   font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
   display: inline-block;
@@ -19,10 +20,14 @@ body {
   background-repeat: no-repeat;
 }
 
-.topic_title, .resources_title, .reviews_title {
+.topic_title, .resources_title {
   text-align: center;
   margin-top: -25px;
   margin-bottom: 15px;
+}
+
+.reviews_title {
+  text-align: center;
 }
 
 .topic_btn input {

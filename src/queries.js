@@ -95,14 +95,14 @@ queries.getMyResource = (resourcesEndpoint, cb) => {
 
 queries.updateMyResource = (payload, cb) => {
   console.log(payload);
-  var endpoint = convertToEndpoint(payload.title);
+  var endpoint = convertToEndpoint(payload.topictitle);
   console.log(endpoint);
-  var values = [payload.title, payload.url, payload.topicid, payload.typeid, endpoint, payload.resourceid];
+  var values = [payload.topictitle, payload.url, payload.topicid, payload.typeid, endpoint, payload.resourceid];
   var sql = `UPDATE resources SET title = $1, url = $2, topic_id = $3, type_id = $4, endpoint = $5 WHERE resources.id=$6`;
   dbConn.query(sql, values, (err) => {
     if (err) cb(err);
     else {
-      var redirect = '/{topicsEndpoint}'; // later redirect to the resource that was updated and/or note that it was updated?
+      var redirect = '/'; // later redirect to the resource that was updated and/or note that it was updated?
       cb(null, redirect);
     }
   });
@@ -115,7 +115,11 @@ queries.getReviews = (resourcesEndpoint, cb) => {
   const values = [resourcesEndpoint];
   dbConn.query(sql, values, (err, data) => {
     if (err) cb(err);
-    else cb(null, data.rows);
+    else {
+      if (data.rows.length !== 0) var title = data.rows[0].title;
+      else var title = 'There are no reviews for this Resource yet... add one?';
+      cb(null, data.rows, title);
+    }
   });
 };
 
