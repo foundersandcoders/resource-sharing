@@ -1,9 +1,8 @@
 {{#each resources}}
    <section class="resources" style="display:inline-block">
      <h3 class="resource_title"><a href={{this.url}}>{{this.title}}</a></h3><br>
-     <p>{{this.reviews_count}} reviews{{# if this.has_reviews}}, average rating {{this.reviews_avg}}{{/if}}</p>
+     <p><a class="resource_btn" href='/{{this.topics_endpoint}}/{{this.endpoint}}'>{{this.reviews_count}} reviews</a>{{# if this.has_reviews}}, average rating {{this.reviews_avg}}{{/if}}</p>
      <a class="resource_btn" href={{this.url}}>Visit this resource</a><br>
-     <a class="resource_btn" href='/{{this.topics_endpoint}}/{{this.endpoint}}'{{this.url}}>See reviews</a><br>
      {{# if ../credentials}}
        <a class="resource_btn" href='/create-review/{{this.endpoint}}'>Write review</a><br>
        <a class="resource_btn" href="/edit-resource/{{this.endpoint}}">Edit</a><br>
