@@ -53,7 +53,7 @@ queries.getTopics = (cb) => {
 };
 
 queries.getResources = (topicsEndpoint, cb) => {
-  const sql = `SELECT resources.title, resources.endpoint, url, topics.endpoint AS topics_endpoint
+  const sql = `SELECT resources.title, resources.endpoint, url, topics.endpoint AS topics_endpoint,
                (SELECT COUNT(*) FROM reviews WHERE reviews.resource_id = resources.id) AS reviews_count,
                (SELECT AVG(rating) FROM reviews WHERE reviews.resource_id = resources.id)::int AS reviews_avg,
                (EXISTS (SELECT * FROM reviews WHERE reviews.resource_id = resources.id)) AS has_reviews
