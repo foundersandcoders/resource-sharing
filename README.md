@@ -121,6 +121,11 @@ To be implemented:
 - /reviews/recent                               Shows all reviews, by all users, in time order - most recent review first  
 
 ## How to run our website on your local machine
+If you don't have postgres installed yet, you can use the following, very short guides:
+[Linux](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04)
+[Mac](https://launchschool.com/blog/how-to-install-postgresql-on-a-mac)
+
+Then:
 - Clone our repo & `cd` into the resource-sharing folder
 - Run `npm install` in your terminal
 - Log in to psql and create new database
