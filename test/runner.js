@@ -5,7 +5,7 @@ const _ = require('./helpers.js');
 
 _.clearTables()
 .then(() => {
-  // require('./routes/register.js');
+  require('./routes/register.js');
   require('./routes/login.js');
   require('./teardown.js');
 })
