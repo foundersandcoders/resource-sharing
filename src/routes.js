@@ -38,7 +38,7 @@ const loginSubmit = {
       console.log(req.payload, userInfo);
       if (err) {
         return reply(error).statusCode(400);
-      } else if (!userInfo) {
+      } else if (!userInfo || userInfo == false) {
         reply.view('login', { loginFailed: true });
       } else {
         req.cookieAuth.set({ username: userInfo.username, userid: userInfo.id });
