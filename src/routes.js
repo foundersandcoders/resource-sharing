@@ -35,8 +35,10 @@ const loginSubmit = {
   path: '/login',
   handler (req, reply) {
     queries.checkLogin(req.payload, (err, userInfo) => {
+      console.log(req.payload, userInfo);
       if (err) {
-        console.log('Unable to login');
+        return reply(error).statusCode(400);
+      } else if (!userInfo) {
         reply.view('login', { loginFailed: true });
       } else {
         req.cookieAuth.set({ username: userInfo.username, userid: userInfo.id });
@@ -59,8 +61,8 @@ const registerSubmit = {
   path: '/register',
   handler (req, reply) {
     console.log(req.payload.password1, req.payload.password2);
-    if(req.payload.password1 !== req.payload.password2) {
-      reply.view('register', { password: true })
+    if (req.payload.password1 !== req.payload.password2) {
+      reply.view('register', { password: true });
     } else {
       queries.registerUser(req.payload, (err, userinfo) => {
         if (err) console.log(err);
