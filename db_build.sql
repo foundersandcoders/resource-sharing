@@ -30,9 +30,9 @@ INSERT INTO topics(id, title, image_path, endpoint) VALUES
   (5, 'Testing', 'testing.jpg', 'testing'),
   (6, 'API', 'API.jpg', 'api'),
   (7, 'Node', 'node.jpg', 'node'),
-  (8, 'Hapi', 'hapi.jpg', 'hapi'),
-  (9, 'Handlebars', 'handlebars.jpg', 'handlebars'),
-  (10, 'Databases', 'databases.jpg', 'databases'),
+  (8, 'Databases', 'databases.jpg', 'databases'),
+  (9, 'Hapi', 'hapi.jpg', 'hapi'),
+  (10, 'Handlebars', 'handlebars.jpg', 'handlebars'),
   (11, 'Authentication', 'authentication.jpg', 'authetication'),
   (12, 'UX & UI', 'ux_ui.jpg', 'ux-ui');
 
