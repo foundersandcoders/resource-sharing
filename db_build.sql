@@ -52,8 +52,8 @@ INSERT INTO type(id, label) VALUES
 
 CREATE TABLE resources (
   id           SERIAL      PRIMARY KEY,
-  title        TEXT        NOT NULL,
-  url          TEXT        NOT NULL,
+  title        TEXT        UNIQUE,
+  url          TEXT        UNIQUE,
   topic_id     INTEGER     NOT NULL     REFERENCES topics(id),
   type_id      INTEGER     NOT NULL     REFERENCES type(id),
   user_id      INTEGER     NOT NULL     REFERENCES users(id),
