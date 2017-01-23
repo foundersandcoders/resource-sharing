@@ -13,10 +13,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users(firstname, lastname, github, email, username, password) VALUES
-  ('Will', 'Savage', 'savagewilliam', 'will@fac.com', 'savagewilliam', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
-  ('Steve', 'Hopkinson', 'stevehopkinson', 'steve@fac.com', 'stevehopkinson', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
-  ('Lucy', 'Monie', 'lucymonie', 'lucy@fac.com', 'lucymonie', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
-  ('Jen', 'Spencer', 'jsms90', 'jen@fac.com', 'jsms90', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS');
+  ('Jen', 'Spencer', 'jsms90', 'jen@foundersandcoders.com', 'jsms90', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS');
 
 CREATE TABLE topics (
   id          SMALLINT   PRIMARY KEY,
@@ -33,10 +30,11 @@ INSERT INTO topics(id, title, image_path, endpoint) VALUES
   (5, 'Testing', 'testing.jpg', 'testing'),
   (6, 'API', 'API.jpg', 'api'),
   (7, 'Node', 'node.jpg', 'node'),
-  (8, 'Databases', 'databases.jpg', 'databases'),
-  (9, 'Hapi', 'hapi.jpg', 'hapi'),
-  (10, 'Handlebars', 'handlebars.jpg', 'handlebars'),
-  (11, 'Authentication', 'authentication.jpg', 'authetication');
+  (8, 'Hapi', 'hapi.jpg', 'hapi'),
+  (9, 'Handlebars', 'handlebars.jpg', 'handlebars'),
+  (10, 'Databases', 'databases.jpg', 'databases'),
+  (11, 'Authentication', 'authentication.jpg', 'authetication'),
+  (12, 'UX & UI', 'ux_ui.jpg', 'ux-ui');
 
 
 CREATE TABLE type (
