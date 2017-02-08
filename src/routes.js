@@ -35,7 +35,6 @@ const loginSubmit = {
   path: '/login',
   handler (req, reply) {
     queries.checkLogin(req.payload, (err, userInfo) => {
-      console.log(req.payload, userInfo);
       if (err) {
         return reply(error).statusCode(400);
       } else if (!userInfo || userInfo == false) {
@@ -60,7 +59,6 @@ const registerSubmit = {
   method: 'POST',
   path: '/register',
   handler (req, reply) {
-    console.log(req.payload.password1, req.payload.password2);
     if (req.payload.password1 !== req.payload.password2) {
       reply.view('register', { password: true });
     } else {
