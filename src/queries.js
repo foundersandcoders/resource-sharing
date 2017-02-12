@@ -18,8 +18,12 @@ queries.checkLogin = (payload, cb) => {
     else {
       const userInfo = data.rows[0];
       Bcrypt.compare(payload.password, userInfo.password, (err, isMatch) => {
-        if (err || !isMatch) cb(err);
-        cb(null, userInfo);
+        if (err) cb(err);
+        else if (!isMatch) {
+          cb(null, false);
+        } else {
+          cb(null, userInfo);
+        }
       });
     }
   });
