@@ -77,7 +77,10 @@ CREATE TABLE reviews (
 );
 
 INSERT INTO reviews(rating, resource_id, content, user_id) VALUES
-  (5, 1, 'Great resource! I hope someone writes one for learning JS in 2017!', 2);
+  (5, 1, 'Great resource! I hope someone writes one for learning JS in 2017!', 2),
+  (3, 1, 'I love JS!', 1),
+  (3, 2, 'I learnt the importance of testing via this resource!', 2),
+  (4, 3, 'HTML & CSS is my bread and butter!', 2);
 
 
 COMMIT;
