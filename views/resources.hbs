@@ -1,12 +1,24 @@
-{{#each resources}}
-   <section class="resources" style="display:inline-block">
-     <h3 class="resource_title"><a href={{this.url}}>{{this.title}}</a></h3><br>
-     <p><a class="resource_btn" href='/{{this.topics_endpoint}}/{{this.endpoint}}'>{{this.reviews_count}} reviews</a>{{# if this.has_reviews}}, average rating {{this.reviews_avg}}{{/if}}</p>
-     {{# if ../credentials}}
-       <a class="resource_btn" href='/create-review/{{this.endpoint}}'>Write review</a><br>
-       <a class="resource_btn" href="/edit-resource/{{this.endpoint}}">Edit</a><br>
-     {{else}}
-       <p>Login/register to add a review</p>
-     {{/if}}
-  </section>
-{{/each}}
+<div class='resources'>
+  {{#each resources}}
+     <section class="resource">
+       <h3 class="resource_title"><a href={{this.url}}>{{this.title}}</a></h3>
+       <p class='resource_type'>
+         {{this.type}}
+       </p>
+       <p><a class="resource_btn" href='/{{this.topics_endpoint}}/{{this.endpoint}}'>
+         {{this.reviews_count}} reviews</a>
+
+         {{# if this.has_reviews}}
+          <span class="rating-static rating-{{this.rating_avg}}"></span>
+         {{/if}}
+       </p>
+
+       {{# if ../credentials}}
+         <a class="resource_btn" href='/create-review/{{this.endpoint}}'>Write review</a><br>
+         <a class="resource_btn" href="/edit-resource/{{this.endpoint}}">Edit</a><br>
+       {{else}}
+         <p>Login/register to add a review</p>
+       {{/if}}
+    </section>
+  {{/each}}
+</div>

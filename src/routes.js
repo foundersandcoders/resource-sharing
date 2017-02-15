@@ -5,7 +5,6 @@ const home = {
   path: '/',
   handler (req, reply) {
     queries.getTopics((err, topics) => {
-      console.log(req.auth.credentials);
       if (err) console.log('No topics were loaded!', err);
       reply.view('topics', { topics });
     });

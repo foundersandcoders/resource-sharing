@@ -1,20 +1,57 @@
+@import url("reviews.css");
+
 body {
   background-color: #ddd;
+  margin: 0;
 }
 
 .navbar {
   margin-bottom: 10px;
+  background: #2C333A;
+  padding: 1rem;
+}
+
+.navbar__list {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__listitem {
+ list-style-type: none;
+ display: inline-block;
+ transition: color 1s ease;
+ margin-left: 1rem;
+}
+
+.navbar__listitem:hover {
+  color: #ff4422;
+}
+
+.navbar__listitem a {
+  color: white;
+  font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
 }
 
 .topics, .resources, .reviews {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.topic, .resource, .review {
   font-family: 'Lato', 'Futura', 'Didact Gothic', sans-serif;
-  display: inline-block;
+  display: block;
   height: 200px;
   width: 200px;
   margin: 20px;
   padding: 0px 20px;
   border-radius: 10px;
-  background-color: #eee;
+  background-color: #fff;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,7 +60,7 @@ body {
 .topic_title, .resources_title {
   text-align: center;
   margin-top: -25px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .reviews_title {

@@ -1,0 +1,13 @@
+.rating-static {
+  width: 60px;
+  height: 16px;
+  display: block;
+  background: url('http://www.itsalif.info/blogfiles/rating/star-rating.png') 0 0 no-repeat;
+}
+
+.rating-5 { background-position: 0 0; }
+.rating-4 { background-position: -12px 0; }
+.rating-3 { background-position: -24px 0; }
+.rating-2 { background-position: -36px 0; }
+.rating-1 { background-position: -48px 0; }
+.rating-0 { background-position: -60px 0; }

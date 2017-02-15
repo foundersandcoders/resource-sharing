@@ -13,7 +13,9 @@ CREATE TABLE users (
 );
 
 INSERT INTO users(firstname, lastname, github, email, username, password) VALUES
-  ('Jen', 'Spencer', 'jsms90', 'jen@foundersandcoders.com', 'jsms90', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS');
+  ('Jen', 'Spencer', 'jsms90', 'jen@foundersandcoders.com', 'jsms90', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS'),
+  ('William', 'Savage', 'SavageWilliam', 'willsavage@hotmail.com', 'SavageWilliam', '$2a$10$UpA4.c39Yp09g5zZZnmeTuE7gabMK2wWeEWlM4d.uSs8iO86FZvyS');
+
 
 CREATE TABLE topics (
   id          SMALLINT   PRIMARY KEY,
@@ -73,5 +75,12 @@ CREATE TABLE reviews (
   content      TEXT        NOT NULL,
   user_id      INTEGER     NOT NULL     REFERENCES users(id)
 );
+
+INSERT INTO reviews(rating, resource_id, content, user_id) VALUES
+  (5, 1, 'Great resource! I hope someone writes one for learning JS in 2017!', 2),
+  (3, 1, 'I love JS!', 1),
+  (3, 2, 'I learnt the importance of testing via this resource!', 2),
+  (4, 3, 'HTML & CSS is my bread and butter!', 2);
+
 
 COMMIT;

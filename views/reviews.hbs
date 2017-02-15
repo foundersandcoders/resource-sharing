@@ -1,8 +1,10 @@
 <h3 class="reviews_title">Reviews of: {{title}}</h3>
 
-{{#each reviews}}
-  <section class="reviews">
-   <p>Rating: {{this.rating}} stars</p><br>
-   <p>{{this.content}}</p>
-  </section>
-{{/each}}
+<div class='reviews'>
+  {{#each reviews}}
+    <section class="review">
+     <p>Rating: {{this.rating}} stars</p><br>
+     <p>{{this.content}}</p>
+    </section>
+  {{/each}}
+</div>
