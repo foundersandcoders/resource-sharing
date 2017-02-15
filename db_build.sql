@@ -7,7 +7,7 @@ CREATE TABLE users (
     firstname   TEXT       NOT NULL,
     lastname    TEXT       NOT NULL,
     github      TEXT       NOT NULL,
-    email       TEXT       NOT NULL,
+    email       TEXT       UNIQUE,
     username    TEXT       UNIQUE,
     password    TEXT       NOT NULL
 );

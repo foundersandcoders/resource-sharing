@@ -37,7 +37,9 @@ queries.registerUser = (payload, cb) => {
                              VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, username`;
       const values = [payload.firstname, payload.lastname, payload.github, payload.email, payload.username, hash];
       dbConn.query(sql, values, (err, data) => {
-        if (err) cb(err);
+        if (err) {
+          cb(err);
+        }
         else {
           const userinfo = data.rows[0];
           cb(null, userinfo);
