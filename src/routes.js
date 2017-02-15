@@ -63,9 +63,13 @@ const registerSubmit = {
       reply.view('register', { password: true });
     } else {
       queries.registerUser(req.payload, (err, userinfo) => {
-        if (err) console.log(err);
-        req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
-        reply.redirect('/');
+        if (err) {
+          console.log('register error');
+          reply.view('register', { alreadyReg: true })
+        } else {
+          req.cookieAuth.set({username: userinfo.username, userid: userinfo.id});
+          reply.redirect('/');
+        }
       });
     }
   }
